@@ -16,11 +16,10 @@ public class TurtleTest extends LinearOpMode {
             waitForStart();
             // Put run blocks here
             while (opModeIsActive()) {
-                motorLeft.setPower(-7);
-                motorRight.setPower(5);
+                motorLeft.setPower(7);
+                motorRight.setPower(-7);
                 // Put loop blocks here
             }
         }
-
-    }
+}
 
