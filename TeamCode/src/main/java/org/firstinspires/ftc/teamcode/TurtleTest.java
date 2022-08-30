@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
-    public class TurtleTest extends LinearOpMode {
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+public class TurtleTest extends LinearOpMode {
         DcMotor motorLeft;
         DcMotor motorRight;
-        ColorSensor color1;
 
         @Override
         public void runOpMode() {
