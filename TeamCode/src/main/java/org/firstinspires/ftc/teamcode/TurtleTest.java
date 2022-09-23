@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@Autonomous(name="TurtleTestMode", group="Turtle Group")
+@TeleOp(name="TurtleTestMode", group="Turtle Group")
 public class TurtleTest extends LinearOpMode {
         DcMotor motorLeft;
         DcMotor motorRight;
