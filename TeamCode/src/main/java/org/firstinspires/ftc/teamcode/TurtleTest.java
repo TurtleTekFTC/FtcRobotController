@@ -52,7 +52,6 @@ public class TurtleTest extends LinearOpMode {
                 if  (gamepad1.dpad_down) {
                     motorLeft.setPower(-0.1);
                     motorRight.setPower(0.1);
-                }
                 else {
                     motorLeft.setPower(0);
                     motorRight.setPower(0);
