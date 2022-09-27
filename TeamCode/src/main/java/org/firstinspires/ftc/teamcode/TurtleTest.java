@@ -46,7 +46,7 @@ public class TurtleTest extends LinearOpMode {
                 } else {
                     motorArm.setPower(0);
                 }
-                if (gamepad1.right_bumper) {
+              if (gamepad1.right_bumper) {
                     motorArm.setPower(-0.75);
 
                 }else {
