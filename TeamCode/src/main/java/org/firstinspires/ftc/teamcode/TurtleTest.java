@@ -37,8 +37,10 @@ public class TurtleTest extends LinearOpMode {
                     motorLeft.setPower(0);
                     motorRight.setPower(0);
                 }
-
-                // Put loop blocks here
+                if (gamepad1.left_bumper) {
+                    motorLeft.setPower(1);
+                    motorRight.setPower(-1);
+                }
             }
         }
 }
