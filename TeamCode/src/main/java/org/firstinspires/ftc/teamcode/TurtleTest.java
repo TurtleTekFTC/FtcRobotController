@@ -20,41 +20,20 @@ public class TurtleTest extends LinearOpMode {
             waitForStart();
             // Put run blocks here
             while (opModeIsActive()) {
-
-
-
-                if  (gamepad1.dpad_up == true ) {
-                    motorLeft.setPower(0.1);
-                    motorRight.setPower(-0.1);
-                }
-                else {
-                    motorLeft.setPower(0);
-                    motorRight.setPower(0);
-                }
-
+                
                 if  (gamepad1.dpad_right == true) {
                     motorLeft.setPower(0.1);
                     motorRight.setPower(0.1);
-                }
-                else {
+                } else if (gamepad1.dpad_left){
                     motorLeft.setPower(0);
                     motorRight.setPower(0);
-                }
-
-                if  (gamepad1.dpad_left == true) {
+                } else if  (gamepad1.dpad_down == true) {
                     motorLeft.setPower(-0.1);
                     motorRight.setPower(-0.1);
-                }
-                else {
+                } else if (gamepad1.dpad_up){
                     motorLeft.setPower(0);
                     motorRight.setPower(0);
-                }
-                
-                if  (gamepad1.dpad_down == true) {
-                    motorLeft.setPower(-0.1);
-                    motorRight.setPower(0.1);
-                }
-                else {
+                } else {
                     motorLeft.setPower(0);
                     motorRight.setPower(0);
                 }
