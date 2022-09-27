@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @TeleOp(name="TurtleTestMode", group="Turtle Group")
 public class TurtleTest extends LinearOpMode {
         DcMotor motorLeft;
-        DcMotor motorRight;
-        DcMotor motorArm;
+    DcMotor motorRight;
+    DcMotor motorArm;
 
         @Override
         public void runOpMode() {
