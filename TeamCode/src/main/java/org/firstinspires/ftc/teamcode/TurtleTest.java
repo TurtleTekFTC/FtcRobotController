@@ -16,6 +16,7 @@ public class TurtleTest extends LinearOpMode {
         public void runOpMode() {
             motorLeft = hardwareMap.get(DcMotor.class, "motorLeft");
             motorRight = hardwareMap.get(DcMotor.class, "motorRight");
+            motorArm = hardwareMap.get(DcMotor.class, "motorArm");
             // Put initialization blocks here
             waitForStart();
             // Put run blocks here
@@ -38,12 +39,12 @@ public class TurtleTest extends LinearOpMode {
                     motorRight.setPower(0);
                 }
                 if (gamepad1.left_bumper) {
-                    motorLeft.setPower(1);
-                    motorRight.setPower(-1);
+                    motorArm.setPower(1);
+
                 }
                 if (gamepad1.right_bumper) {
-                    motorLeft.setPower(-1);
-                    motorRight.setPower(1);
+                    motorArm.setPower(-1);
+
                 }
             }
         }
