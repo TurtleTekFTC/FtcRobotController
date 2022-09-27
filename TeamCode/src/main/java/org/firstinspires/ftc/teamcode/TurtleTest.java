@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class TurtleTest extends LinearOpMode {
         DcMotor motorLeft;
         DcMotor motorRight;
+        DcMotor motorArm;
 
         @Override
         public void runOpMode() {
@@ -39,22 +40,12 @@ public class TurtleTest extends LinearOpMode {
                     motorRight.setPower(0);
                 }
                 if (gamepad1.left_bumper) {
-<<<<<<< HEAD
-                    motorArm.setPower(1);
-
+                    motorArm.setPower(0.75);
                 }
                 if (gamepad1.right_bumper) {
-                    motorArm.setPower(-1);
+                    motorArm.setPower(-0.75);
+                }
 
-=======
-                    motorLeft.setPower(0.75);
-                    motorRight.setPower(-0.75);
-                }
-                if (gamepad1.right_bumper) {
-                    motorLeft.setPower(-0.75);
-                    motorRight.setPower(0.75);
->>>>>>> e4a4b0f1ecc6822e387f2a86bf461139f8cc8426
-                }
             }
         }
 }
