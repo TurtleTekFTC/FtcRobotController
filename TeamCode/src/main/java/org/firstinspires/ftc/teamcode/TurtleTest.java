@@ -17,15 +17,13 @@ public class TurtleTest extends LinearOpMode {
             motorLeft = hardwareMap.get(DcMotor.class, "motorLeft");
             motorRight = hardwareMap.get(DcMotor.class, "motorRight");
             // Put initialization blocks here
-            motorLeft.setDirection(DcMotor.Direction.REVERSE);
-            motorRight.setDirection(DcMotor.Direction.FORWARD);
             waitForStart();
             // Put run blocks here
             while (opModeIsActive()) {
-               
 
 
-                if  (gamepad1.dpad_up) {
+
+                if  (gamepad1.dpad_up == true ) {
                     motorLeft.setPower(0.1);
                     motorRight.setPower(-0.1);
                 }
@@ -34,7 +32,7 @@ public class TurtleTest extends LinearOpMode {
                     motorRight.setPower(0);
                 }
 
-                if  (gamepad1.dpad_right) {
+                if  (gamepad1.dpad_right == true) {
                     motorLeft.setPower(0.1);
                     motorRight.setPower(0.1);
                 }
@@ -43,7 +41,7 @@ public class TurtleTest extends LinearOpMode {
                     motorRight.setPower(0);
                 }
 
-                if  (gamepad1.dpad_left) {
+                if  (gamepad1.dpad_left == true) {
                     motorLeft.setPower(-0.1);
                     motorRight.setPower(-0.1);
                 }
@@ -52,7 +50,7 @@ public class TurtleTest extends LinearOpMode {
                     motorRight.setPower(0);
                 }
                 
-                if  (gamepad1.dpad_down) {
+                if  (gamepad1.dpad_down == true) {
                     motorLeft.setPower(-0.1);
                     motorRight.setPower(0.1);
                 }
