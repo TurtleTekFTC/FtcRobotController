@@ -27,15 +27,19 @@ public class AutonomousTest extends LinearOpMode{
         while (opModeIsActive()) {
             motorLeft.setPower(-0.5);
             motorRight.setPower(0.5);
-            sleep(1000);
+            sleep(100);
             motorLeft.setPower(0);
             motorRight.setPower(0);
             motorArm.setPower(-0.5);
+            sleep(100);
+            motorArm.setPower(0);
             claw1.setPosition(0.25);
             claw2.setPosition(0.25);
-            sleep(1000);
+            sleep(100);
             claw1.setPosition(0);
             claw2.setPosition(0);
+            motorArm.setPower(0.5);
+            sleep(100);
             motorArm.setPower(0);
         }
     }
