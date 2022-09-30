@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="DriveWithSticksJava", group="Turtle Group")
 public class DriveWithSticks extends LinearOpMode {
+
     DcMotor motorLeft;
     DcMotor motorRight;
     DcMotor motorArm;
@@ -35,7 +36,7 @@ public class DriveWithSticks extends LinearOpMode {
 
             if (gamepad2.left_stick_y);
 
-                motorArm.setPower(gamepad2.left_stick_y);
+                motorArm.setPower(gamepad1.left_stick_y);
 
             if (gamepad2.left_bumper) {
 
