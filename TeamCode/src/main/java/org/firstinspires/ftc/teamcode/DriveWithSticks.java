@@ -6,19 +6,21 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="DriveWithSticksJava", group="Turtle Group")
 public class DriveWithSticks extends LinearOpMode {
     DcMotor motorLeft;
     DcMotor motorRight;
     DcMotor motorArm;
+    Servo Claw;
 
     @Override
     public void runOpMode() {
         motorLeft = hardwareMap.get(DcMotor.class, "motorLeft");
         motorRight = hardwareMap.get(DcMotor.class, "motorRight");
         motorArm = hardwareMap.get(DcMotor.class, "motorArm");
-        Claw = hardwareMap.get(.class, "Claw");
+        Claw = hardwareMap.get(Servo.class, "Claw");
 
 
         // Put initialization blocks here
