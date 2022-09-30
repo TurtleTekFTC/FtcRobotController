@@ -28,12 +28,12 @@ public class DriveWithSticks extends LinearOpMode {
         // Put run blocks here
         while (opModeIsActive()) {
 
-            motorLeft.setPower(gamepad1.left_stick_y);
+            motorLeft.setPower(gamepad1.left_stick_y*-1);
             motorRight.setPower(gamepad1.right_stick_y);
 
-            if (gamepad2.left_stick_y);
+            if (gamepad2.left_stick_y > 0)
 
-                motorArm.setPower(gamepad2.left_stick_y)
+                motorArm.setPower(gamepad2.left_stick_y);
 
             if (gamepad2.left_bumper) {
 
