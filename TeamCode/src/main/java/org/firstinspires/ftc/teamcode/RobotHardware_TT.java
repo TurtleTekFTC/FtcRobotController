@@ -164,4 +164,11 @@ public class RobotHardware_TT {
         claw1.setPosition(MID_SERVO + offset);
         claw2.setPosition(MID_SERVO - offset);
     }
+    public void setHandPosition(double leftWheel, double rightWheel) {
+        // Output the values to the motor drives.
+        claw1.setPosition(leftWheel);
+        claw2.setPosition(rightWheel);
+    }
 }
+
+
