@@ -59,8 +59,7 @@ public class BasicOpMode_Linear_TT extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor leftDrive = null;
-    private DcMotor rightDrive = null;
+    RobotHardware_TT   robot       = new RobotHardware_TT(this);
 
     @Override
     public void runOpMode() {
@@ -70,13 +69,11 @@ public class BasicOpMode_Linear_TT extends LinearOpMode {
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
-        leftDrive  = hardwareMap.get(DcMotor.class, "motorLeft");
-        rightDrive = hardwareMap.get(DcMotor.class, "motorRight");
+
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
-        leftDrive.setDirection(DcMotor.Direction.REVERSE);
-        rightDrive.setDirection(DcMotor.Direction.FORWARD);
+        robot.init();
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
@@ -105,8 +102,8 @@ public class BasicOpMode_Linear_TT extends LinearOpMode {
            // rightPower = -gamepad1.right_stick_y ;
 
             // Send calculated power to wheels
-            leftDrive.setPower(leftPower);
-            rightDrive.setPower(rightPower);
+            robot.setDrivePower(leftPower, rightPower);
+
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
