@@ -45,8 +45,8 @@ import java.util.List;
  * is explained below
  */
 
-@TeleOp(name="Concept: VuMark Id Webcam", group ="Concept")
-@Disabled
+@TeleOp(name="SignalConeScan", group ="Turtle Group")
+//@Disabled
 public class SignalConeScan extends LinearOpMode {
 
     /*
