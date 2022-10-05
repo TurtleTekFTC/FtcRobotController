@@ -92,7 +92,6 @@ public class SignalConeScan extends LinearOpMode {
 
         if (opModeIsActive()) {
             while (opModeIsActive()) {
-                robot.recognition();
                 List<Recognition> updatedRecognitions = robot.recognition();
                         // step through the list of recognitions and display image position/size information for each one
                         // Note: "Image number" refers to the randomized image orientation/number
