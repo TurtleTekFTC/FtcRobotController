@@ -193,8 +193,8 @@ public class RobotHardware_TT {
         claw2.setPosition(rightWheel);
     }
     public void initCamera() {
-        initTfod();
         initVuforia();
+        initTfod();
     }
     private void initVuforia() {
         /*
