@@ -2,6 +2,10 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
+
+import java.util.List;
+
 public class SignalScanMove extends LinearOpMode {
     RobotHardware_TT   robot       = new RobotHardware_TT(this);
 
@@ -12,7 +16,7 @@ public class SignalScanMove extends LinearOpMode {
 
         waitForStart();
         while (opModeIsActive()) {
-
+            
         }
     }
 }
