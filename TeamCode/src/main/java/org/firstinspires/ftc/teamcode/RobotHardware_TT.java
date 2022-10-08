@@ -85,7 +85,7 @@ public class RobotHardware_TT {
 
         public TFObjectDetector tfod;
         private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
-        private static final String[] LABELS = {
+        public static final String[] LABELS = {
                 "1 Bolt",
                 "2 Bulb",
                 "3 Panel"
