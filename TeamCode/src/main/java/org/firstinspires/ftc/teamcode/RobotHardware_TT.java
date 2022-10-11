@@ -37,11 +37,13 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorDigitalTouch;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -79,6 +81,7 @@ public class RobotHardware_TT {
     private DcMotor armMotor;
     private Servo claw1;
     private Servo claw2;
+    private DigitalChannel touchSensor;
         private static final String VUFORIA_KEY =
                 LicenseKey.key;
         private VuforiaLocalizer vuforia;
@@ -133,6 +136,8 @@ public class RobotHardware_TT {
         claw2 = myOpMode.hardwareMap.get(Servo.class, "claw2");
         claw1.setPosition(MID_SERVO);
         claw2.setPosition(MID_SERVO);
+
+        touchSensor = myOpMode.hardwareMap.get(DigitalChannel.class,"touchSensor");
 
         myOpMode.telemetry.addData(">", "Hardware Initialized");
         myOpMode.telemetry.update();
@@ -198,6 +203,9 @@ public class RobotHardware_TT {
         // Output the values to the motor drives.
         claw1.setPosition(leftWheel);
         claw2.setPosition(rightWheel);
+    }
+    public boolean touchSensorPressed(){
+        return touchSensor.getState();
     }
     public void initCamera() {
         initVuforia();
