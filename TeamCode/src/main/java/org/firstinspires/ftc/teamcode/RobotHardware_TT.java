@@ -265,7 +265,14 @@ public class RobotHardware_TT {
         }
         return updatedRecognitions;
     }
-
+    public void TurnLeft() {
+        setDrivePower(-1, 1);
+        myOpMode.sleep(1000);
+    }
+    public void TurnRight() {
+        setDrivePower(1, -1);
+        myOpMode.sleep(1000);
+    }
 }
 
 

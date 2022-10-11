@@ -17,26 +17,52 @@ public class SignalScanMove extends LinearOpMode {
         robot.initCamera();
 
         waitForStart();
-        while (opModeIsActive()) {
+        boolean objectRecognized = false;
+        int recognizedObject = -1;
+        while (!objectRecognized){
             List<Recognition> updatedRecognitions = robot.recognition();
             if (updatedRecognitions != null) {
                 for (Recognition recognition : updatedRecognitions) {
                     if (recognition.getLabel() == robot.LABELS[0]) {
-                    //drive backwards
-                    telemetry.addLine("Drive Backwards");
+                        //Bolts: 1.go forward 2.turn left 3.forward 4.turn right 5.forward
+                        objectRecognized = true;
+                        recognizedObject = 0;
+                        telemetry.addLine("Drive Backwards");
                     } else if (recognition.getLabel() == robot.LABELS[1]) {
-                    //spin left
-                    telemetry.addLine("Spin Left");
+                        //spin left
+                        objectRecognized = true;
+                        recognizedObject = 1;
+                        telemetry.addLine("Spin Left");
                     } else if (recognition.getLabel() == robot.LABELS[2]) {
-                    //spin right
-                    telemetry.addLine("Spin Right");
-                    } else {
-                    //nothing
-                    telemetry.addLine("Do Nothing");
+                        //spin right
+                        objectRecognized = true;
+                        recognizedObject = 2;
+                        telemetry.addLine("Spin Right");
                     }
                 }
             }
             telemetry.update();
         }
+        if (objectRecognized) {
+            if (recognizedObject == 0) {
+                robot.setDrivePower(1, 1);
+                sleep(1000);
+                robot.TurnLeft();
+                robot.setDrivePower(1, 1);
+                sleep(1000);
+                robot.TurnRight();
+            } else if (recognizedObject == 1) {
+                robot.setDrivePower(1, 1);
+                sleep(1000);
+            } else if (recognizedObject == 2) {
+                robot.setDrivePower(1, 1);
+                sleep(1000);
+                robot.TurnRight();
+                robot.setDrivePower(1, 1);
+                sleep(1000);
+                robot.TurnLeft();
+            }
+        }
     }
+
 }
