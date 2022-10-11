@@ -19,21 +19,24 @@ public class SignalScanMove extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             List<Recognition> updatedRecognitions = robot.recognition();
-            for (Recognition recognition : updatedRecognitions) {
-                if (recognition.getLabel() == robot.LABELS[0]) {
+            if (updatedRecognitions != null) {
+                for (Recognition recognition : updatedRecognitions) {
+                    if (recognition.getLabel() == robot.LABELS[0]) {
                     //drive backwards
                     telemetry.addLine("Drive Backwards");
-                } else if (recognition.getLabel() == robot.LABELS[1]) {
+                    } else if (recognition.getLabel() == robot.LABELS[1]) {
                     //spin left
                     telemetry.addLine("Spin Left");
-                } else if (recognition.getLabel() == robot.LABELS[2]) {
+                    } else if (recognition.getLabel() == robot.LABELS[2]) {
                     //spin right
                     telemetry.addLine("Spin Right");
-                } else {
+                    } else {
                     //nothing
                     telemetry.addLine("Do Nothing");
+                    }
                 }
             }
+            telemetry.update();
         }
     }
 }
