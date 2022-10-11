@@ -18,7 +18,7 @@ public class TouchSensor extends LinearOpMode {
         // Put run blocks here
         while (opModeIsActive()) {
 
-            if (robot.touchSensorPressed() == true)
+            if (robot.touchSensorIsPressed())
             {
                 robot.driveRobot(-1, 0);
             }
