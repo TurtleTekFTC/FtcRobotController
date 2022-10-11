@@ -204,8 +204,11 @@ public class RobotHardware_TT {
         claw1.setPosition(leftWheel);
         claw2.setPosition(rightWheel);
     }
-    public boolean touchSensorPressed(){
+    public boolean touchSensorNotPressed(){
         return touchSensor.getState();
+    }
+    public boolean touchSensorIsPressed(){
+        return !touchSensor.getState();
     }
     public void initCamera() {
         initVuforia();
