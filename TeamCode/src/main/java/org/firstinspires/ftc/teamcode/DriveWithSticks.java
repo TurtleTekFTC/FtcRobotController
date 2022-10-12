@@ -11,7 +11,7 @@ public class DriveWithSticks extends LinearOpMode {
         robot.init();
         waitForStart();
         while (opModeIsActive()) {
-            robot.setDrivePower(-gamepad1.left_stick_y, -gamepad1.right_stick_y);
+            robot.tankDrive(-gamepad1.left_stick_y, -gamepad1.right_stick_y);
            /* robot.setArmPower(-gamepad2.left_stick_y);
 
             if (gamepad2.left_bumper) {

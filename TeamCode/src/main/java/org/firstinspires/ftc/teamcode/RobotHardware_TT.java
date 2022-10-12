@@ -29,15 +29,11 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.SensorDigitalTouch;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
@@ -46,10 +42,7 @@ import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * This file works in conjunction with the External Hardware Class sample called: ConceptExternalHardwareClass.java
@@ -151,7 +144,7 @@ public class RobotHardware_TT {
      * @param Drive     Fwd/Rev driving power (-1.0 to 1.0) +ve is forward
      * @param Turn      Right/Left turning power (-1.0 to 1.0) +ve is CW
      */
-    public void driveRobot(double Drive, double Turn) {
+    public void arcadeDrive(double Drive, double Turn) {
         // Combine drive and turn for blended motion.
         double left  = Drive + Turn;
         double right = Drive - Turn;
@@ -165,7 +158,7 @@ public class RobotHardware_TT {
         }
 
         // Use existing function to drive both wheels.
-        setDrivePower(left, right);
+        tankDrive(left, right);
     }
 
     /**
@@ -174,7 +167,7 @@ public class RobotHardware_TT {
      * @param leftWheel     Fwd/Rev driving power (-1.0 to 1.0) +ve is forward
      * @param rightWheel    Fwd/Rev driving power (-1.0 to 1.0) +ve is forward
      */
-    public void setDrivePower(double leftWheel, double rightWheel) {
+    public void tankDrive(double leftWheel, double rightWheel) {
         // Output the values to the motor drives.
         leftDrive.setPower(leftWheel);
         rightDrive.setPower(rightWheel);
@@ -269,11 +262,11 @@ public class RobotHardware_TT {
         return updatedRecognitions;
     }
     public void TurnLeft() {
-        setDrivePower(-1, 1);
+        tankDrive(-1, 1);
         myOpMode.sleep(1000);
     }
     public void TurnRight() {
-        setDrivePower(1, -1);
+        tankDrive(1, -1);
         myOpMode.sleep(1000);
     }
 }

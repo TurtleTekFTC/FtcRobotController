@@ -45,20 +45,20 @@ public class SignalScanMove extends LinearOpMode {
         }
         if (objectRecognized) {
             if (recognizedObject == 0) {
-                robot.setDrivePower(1, 1);
+                robot.tankDrive(1, 1);
                 sleep(1000);
                 robot.TurnLeft();
-                robot.setDrivePower(1, 1);
+                robot.tankDrive(1, 1);
                 sleep(1000);
                 robot.TurnRight();
             } else if (recognizedObject == 1) {
-                robot.setDrivePower(1, 1);
+                robot.tankDrive(1, 1);
                 sleep(1000);
             } else if (recognizedObject == 2) {
-                robot.setDrivePower(1, 1);
+                robot.tankDrive(1, 1);
                 sleep(1000);
                 robot.TurnRight();
-                robot.setDrivePower(1, 1);
+                robot.tankDrive(1, 1);
                 sleep(1000);
                 robot.TurnLeft();
             }

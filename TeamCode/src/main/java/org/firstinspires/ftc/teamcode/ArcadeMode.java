@@ -11,7 +11,7 @@ public class ArcadeMode extends LinearOpMode {
         robot.init();
         waitForStart();
         while (opModeIsActive()) {
-            robot.driveRobot(-gamepad1.left_stick_y, -gamepad1.right_stick_x);
+            robot.arcadeDrive(-gamepad1.left_stick_y, -gamepad1.right_stick_x);
         }
     }
 }
