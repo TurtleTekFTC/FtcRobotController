@@ -20,10 +20,10 @@ public class TouchSensor extends LinearOpMode {
 
             if (robot.touchSensorIsPressed())
             {
-                robot.driveRobot(-1, 0);
+                robot.arcadeDrive(-1, 0);
             }
             else{
-                robot.driveRobot(0,0);
+                robot.arcadeDrive(0,0);
             }
         }
     }

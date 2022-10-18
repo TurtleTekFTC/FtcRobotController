@@ -169,8 +169,8 @@ public class RobotHardware_TT {
      */
     public void tankDrive(double leftWheel, double rightWheel) {
         // Output the values to the motor drives.
-        leftDrive.setPower(leftWheel);
-        rightDrive.setPower(rightWheel);
+        leftDrive.setPower(-leftWheel);
+        rightDrive.setPower(-rightWheel);
     }
 
     /**
