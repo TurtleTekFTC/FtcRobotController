@@ -19,7 +19,7 @@ public class SignalScanMove extends LinearOpMode {
         waitForStart();
         boolean objectRecognized = false;
         int recognizedObject = -1;
-        while (!objectRecognized){
+        while (!objectRecognized && opModeIsActive()){
             List<Recognition> updatedRecognitions = robot.recognition();
             if (updatedRecognitions != null) {
                 for (Recognition recognition : updatedRecognitions) {
