@@ -27,17 +27,17 @@ public class SignalScanMove extends LinearOpMode {
                         //Bolts: 1.go forward 2.turn left 3.forward 4.turn right 5.forward
                         objectRecognized = true;
                         recognizedObject = 0;
-                        telemetry.addLine("Drive Backwards");
+                        telemetry.addLine("bolt");
                     } else if (recognition.getLabel() == robot.LABELS[1]) {
                         //spin left
                         objectRecognized = true;
                         recognizedObject = 1;
-                        telemetry.addLine("Spin Left");
+                        telemetry.addLine("bulb");
                     } else if (recognition.getLabel() == robot.LABELS[2]) {
                         //spin right
                         objectRecognized = true;
                         recognizedObject = 2;
-                        telemetry.addLine("Spin Right");
+                        telemetry.addLine("panel");
                     }
                 }
             }
@@ -55,12 +55,12 @@ public class SignalScanMove extends LinearOpMode {
                 robot.tankDrive(1, 1);
                 sleep(1000);
             } else if (recognizedObject == 2) {
-                robot.tankDrive(1, 1);
-                sleep(1000);
+                robot.tankDrive(-0.85, -0.85);
+                sleep(10);
                 robot.TurnRight();
-                robot.tankDrive(1, 1);
-                sleep(1000);
-                robot.TurnLeft();
+                /*robot.tankDrive(-1, -1);
+                sleep(500);
+                robot.TurnLeft();*/
             }
         }
     }

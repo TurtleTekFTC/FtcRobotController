@@ -119,6 +119,8 @@ public class RobotHardware_TT {
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
+        leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // If there are encoders connected, switch to RUN_USING_ENCODER mode for greater accuracy
         // leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -262,12 +264,12 @@ public class RobotHardware_TT {
         return updatedRecognitions;
     }
     public void TurnLeft() {
-        tankDrive(-1, 1);
-        myOpMode.sleep(1000);
+        tankDrive(0.5, -0.5);
+        myOpMode.sleep(50);
     }
     public void TurnRight() {
-        tankDrive(1, -1);
-        myOpMode.sleep(1000);
+        tankDrive(-0.5, 0.5);
+        myOpMode.sleep(50);
     }
 }
 
