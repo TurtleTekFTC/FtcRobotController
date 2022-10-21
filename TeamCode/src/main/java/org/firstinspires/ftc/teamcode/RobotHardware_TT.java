@@ -75,6 +75,7 @@ public class RobotHardware_TT {
     private Servo claw1;
     private Servo claw2;
     private DigitalChannel touchSensor;
+    private double secondToFeetRatio = 1.0F;
         private static final String VUFORIA_KEY =
                 LicenseKey.key;
         private VuforiaLocalizer vuforia;
@@ -176,6 +177,17 @@ public class RobotHardware_TT {
         // Output the values to the motor drives.
         leftDrive.setPower(-leftWheel);
         rightDrive.setPower(-rightWheel);
+    }
+    /**
+     * The robot eats pizza. Not really. It drives for a distance of x feet.
+     *
+     * @param feet The distance that the robot will drive.
+     */
+    public void driveDistance(double feet){
+        double secondsToDrive = feet/secondToFeetRatio;
+        leftDrive.setPower(-1);
+        rightDrive.setPower(-1);
+        myOpMode.sleep((long) secondsToDrive);
     }
 
     /**
