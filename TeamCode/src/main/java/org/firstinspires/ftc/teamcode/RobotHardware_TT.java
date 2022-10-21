@@ -267,12 +267,12 @@ public class RobotHardware_TT {
         return updatedRecognitions;
     }
     public void TurnLeft() {
-        tankDrive(0.5, -0.5);
-        myOpMode.sleep(50);
+        tankDrive(0.75, -0.75);
+        myOpMode.sleep(25);
     }
     public void TurnRight() {
-        tankDrive(-0.5, 0.5);
-        myOpMode.sleep(50);
+        tankDrive(-0.75, 0.75);
+        myOpMode.sleep(25);
     }
 }
 
