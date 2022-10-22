@@ -15,8 +15,8 @@ public class Initialization extends LinearOpMode {
 
         waitForStart();
         robot.tankDrive(1,1);
-        sleep(1000);
-        robot.tankDrive(0,0);
+        sleep(100);
+        robot.tankDrive(0, 0);
 
         
     }

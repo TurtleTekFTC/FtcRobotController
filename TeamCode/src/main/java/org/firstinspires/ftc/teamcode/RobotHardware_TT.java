@@ -29,6 +29,8 @@
 
 package org.firstinspires.ftc.teamcode;
 
+
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -75,7 +77,7 @@ public class RobotHardware_TT {
     private Servo claw1;
     private Servo claw2;
     private DigitalChannel touchSensor;
-    private double secondToFeetRatio = 1.0F;
+    private double secondToFeetRatio = 3.75;
         private static final String VUFORIA_KEY =
                 LicenseKey.key;
         private VuforiaLocalizer vuforia;
@@ -185,9 +187,14 @@ public class RobotHardware_TT {
      */
     public void driveDistance(double feet){
         double secondsToDrive = feet/secondToFeetRatio;
-        leftDrive.setPower(-1);
-        rightDrive.setPower(-1);
-        myOpMode.sleep((long) secondsToDrive);
+        double millisecondsToDrive = secondsToDrive*1000;
+        tankDrive(1,1);
+        myOpMode.telemetry.addLine(String.valueOf(millisecondsToDrive));
+        myOpMode.telemetry.update();
+        myOpMode.sleep((long) millisecondsToDrive);
+        tankDrive(0,0);
+
+
     }
 
     /**
@@ -281,10 +288,12 @@ public class RobotHardware_TT {
     public void TurnLeft() {
         tankDrive(0.75, -0.75);
         myOpMode.sleep(25);
+        tankDrive(0,0);
     }
     public void TurnRight() {
         tankDrive(-0.75, 0.75);
         myOpMode.sleep(25);
+        tankDrive(0,0);
     }
 }
 
