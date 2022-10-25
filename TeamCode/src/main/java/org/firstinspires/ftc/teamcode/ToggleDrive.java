@@ -30,11 +30,13 @@ public class ToggleDrive extends LinearOpMode {
 
             robot.setArmPower(-gamepad2.left_stick_y);
 
-            robot.setHandPosition();
-            if (gamepad2.right_bumper == true) {
+            if (gamepad2.left_bumper && gamepad2.right_bumper == true) {
+                robot.setHandPosition(0.25,0.25);
+            }
+            else if (gamepad2.right_bumper == true) {
                 robot.setHandPosition(0,0);
             }
-            if (gamepad2.left_bumper) {
+           else if (gamepad2.left_bumper) {
                 robot.setHandPosition(0.5,0.5);
             }
 
