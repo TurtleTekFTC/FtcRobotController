@@ -27,17 +27,17 @@ public class SignalScanMove extends LinearOpMode {
                         //Bolts: 1.go forward 2.turn left 3.forward 4.turn right 5.forward
                         objectRecognized = true;
                         recognizedObject = 0;
-                        telemetry.addLine("Lightning bolt");
+                        telemetry.addLine("Lightning Bolt");
                     } else if (recognition.getLabel() == robot.LABELS[1]) {
                         //spin left
                         objectRecognized = true;
                         recognizedObject = 1;
-                        telemetry.addLine("Light bulb");
+                        telemetry.addLine("Light Bulb");
                     } else if (recognition.getLabel() == robot.LABELS[2]) {
                         //spin right
                         objectRecognized = true;
                         recognizedObject = 2;
-                        telemetry.addLine("panel");
+                        telemetry.addLine("Solar Panel");
                     }
                 }
             }
