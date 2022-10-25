@@ -27,6 +27,11 @@ public class ToggleDrive extends LinearOpMode {
             if (isUsingArcade == true){
                 robot.arcadeDrive(-gamepad1.left_stick_y, gamepad1.right_stick_x);
             }
+
+            robot.setArmPower(-gamepad2.left_stick_y);
+            robot.setHandPositions(-gamepad2.right_stick_y);
+            robot.setHandPosition(gamepad2.left_trigger,-gamepad2.right_trigger);
+            
         }
     }
 }
