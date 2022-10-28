@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class TurtleTest extends LinearOpMode {
     RobotHardware_TT robot = new RobotHardware_TT(this);
 
-    double servoPosition = 0;
     @Override
     public void runOpMode() {
         robot.init();
@@ -16,18 +15,11 @@ public class TurtleTest extends LinearOpMode {
         waitForStart();
         // Put run blocks here
         while (opModeIsActive()) {
-
-            if (gamepad2.left_bumper && gamepad2.right_bumper) {
+            while (robot.getArmInches() < 12) {
+                robot.setArmPower(0.1);
+                telemetry.addData("Arm inches: ", robot.getArmInches());
+                telemetry.update();
             }
-            else if (gamepad2.right_bumper){
-                servoPosition = servoPosition + 0.01;
-                robot.setHandPosition(servoPosition,servoPosition);
-            }
-            else if (gamepad2.left_bumper){
-                servoPosition = 0;
-                robot.setHandPosition(servoPosition,servoPosition);
         }
-        }
-
     }
 }

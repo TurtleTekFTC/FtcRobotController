@@ -191,7 +191,7 @@ public class RobotHardware_TT {
      *
      * @param feet The distance that the robot will drive.
      */
-    public void driveDistance(double feet){
+    public void driveDistance(double feet) {
         double secondsToDrive = feet/secondToFeetRatio;
         double millisecondsToDrive = secondsToDrive*1000;
         tankDrive(1,1);
@@ -201,6 +201,13 @@ public class RobotHardware_TT {
         tankDrive(0,0);
 
 
+    }
+
+    public double getArmEncoderValue() {
+         return armMotor.getCurrentPosition();
+    }
+    public double getArmInches() {
+        return getArmEncoderValue() * .0082;
     }
 
     /**
