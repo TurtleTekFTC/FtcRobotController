@@ -195,8 +195,8 @@ public class RobotHardware_TT {
         double secondsToDrive = feet/secondToFeetRatio;
         double millisecondsToDrive = secondsToDrive*1000;
         tankDrive(1,1);
-        myOpMode.telemetry.addLine(String.valueOf(millisecondsToDrive));
-        myOpMode.telemetry.update();
+        //myOpMode.telemetry.addLine(String.valueOf(millisecondsToDrive));
+        //myOpMode.telemetry.update();
         myOpMode.sleep((long) millisecondsToDrive);
         tankDrive(0,0);
 
@@ -254,7 +254,7 @@ public class RobotHardware_TT {
         exposureControl.setMode(ExposureControl.Mode.Manual);
         // max exposure:1000
         // min exposure:0
-        exposureControl.setExposure(500, TimeUnit.MILLISECONDS);
+        exposureControl.setExposure(10, TimeUnit.MILLISECONDS);
         myOpMode.telemetry.update();
 
 
@@ -302,13 +302,13 @@ public class RobotHardware_TT {
         return updatedRecognitions;
     }
     public void TurnLeft() {
-        tankDrive(0.75, -0.75);
-        myOpMode.sleep(25);
+        tankDrive(-0.75, 0.75);
+        myOpMode.sleep(350);
         tankDrive(0,0);
     }
     public void TurnRight() {
-        tankDrive(-0.75, 0.75);
-        myOpMode.sleep(25);
+        tankDrive(0.75, -0.75);
+        myOpMode.sleep(330);
         tankDrive(0,0);
     }
 }

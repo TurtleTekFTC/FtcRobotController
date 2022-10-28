@@ -2,9 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
-
 import java.util.List;
 
 @Autonomous(name="TurtleTestCamera", group="Turtle Group")
@@ -45,21 +43,38 @@ public class SignalScanMove extends LinearOpMode {
         }
         if (objectRecognized) {
             if (recognizedObject == 0) {
-                robot.tankDrive(0.85, 0.85);
-                sleep(10);
+                robot.driveDistance(0.5);
+                sleep(2000);
                 robot.TurnLeft();
-                robot.tankDrive(1, 1);
-                sleep(1000);
-                robot.TurnRight();
-            } else if (recognizedObject == 1) {
-                robot.tankDrive(0.5, 0.5);
-                sleep(100);
-            } else if (recognizedObject == 2) {
-                robot.driveDistance(0.25);
-                robot.TurnRight();
+                sleep(2000);
                 robot.driveDistance(1.5);
+                sleep(2000);
+                robot.TurnRight();
+                sleep(2000);
+                robot.driveDistance(1.75);
+                sleep(2000);
+            } else if (recognizedObject == 1) {
+                robot.tankDrive(0.25, -0.25);
+                sleep(100);
+                robot.tankDrive(0,0);
+                sleep(2);
+                telemetry.addLine("turn");
+                robot.driveDistance(2);
+                telemetry.addLine("drive");
+                robot.tankDrive(0,0);
+                sleep(2);
+            } else if (recognizedObject == 2) {
+                robot.driveDistance(0.5);
+                sleep(2000);
+                robot.TurnRight();
+                sleep(2000);
+                robot.driveDistance(2);
+                sleep(2000);
                 robot.TurnLeft();
-            }
+                sleep(2000);
+                robot.driveDistance(1.5);
+                sleep(2000);
+            }//telemetry.update();
         }
     }
 
