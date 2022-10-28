@@ -1,14 +1,15 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpModeRegistrar;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name="TurtleTestMode", group="Turtle Group")
 public class TurtleTest extends LinearOpMode {
     RobotHardware_TT robot = new RobotHardware_TT(this);
 
-    @Override
     double servoPosition = 0;
+    @Override
     public void runOpMode() {
         robot.init();
         // Put initialization blocks here
