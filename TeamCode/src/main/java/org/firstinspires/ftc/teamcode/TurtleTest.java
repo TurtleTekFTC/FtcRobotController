@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class TurtleTest extends LinearOpMode {
     RobotHardware_TT robot = new RobotHardware_TT(this);
 
-    @Override
     double servoPosition = 0;
     public void runOpMode() {
         robot.init();
