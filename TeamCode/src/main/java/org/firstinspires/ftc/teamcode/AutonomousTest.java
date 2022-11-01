@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous(name="TurtleTestAutonomous", group="Turtle Group")
+
 public class AutonomousTest extends LinearOpMode{
     RobotHardware_TT   robot       = new RobotHardware_TT(this);
 

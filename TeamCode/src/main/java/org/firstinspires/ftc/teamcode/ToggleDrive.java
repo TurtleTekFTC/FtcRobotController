@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name="ToggleDrive", group="Turtle Group")
+@TeleOp(name="TeleOp_TT", group="Turtle Group")
 public class ToggleDrive extends LinearOpMode {
     RobotHardware_TT robot = new RobotHardware_TT(this);
 

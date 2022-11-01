@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import java.util.List;
 
-@Autonomous(name="TurtleTestCamera", group="Turtle Group")
+@Autonomous(name="Autonomous_TT", group="Turtle Group")
 public class SignalScanMove extends LinearOpMode {
     RobotHardware_TT   robot       = new RobotHardware_TT(this);
 

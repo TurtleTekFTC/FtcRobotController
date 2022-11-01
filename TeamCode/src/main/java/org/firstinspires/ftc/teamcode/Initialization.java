@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@Autonomous(name="Init", group="Turtle Group")
 public class Initialization extends LinearOpMode {
 
     RobotHardware_TT   robot       = new RobotHardware_TT(this);
