@@ -14,7 +14,7 @@ public class Build extends LinearOpMode {
 
         waitForStart();
         while (opModeIsActive()) {
-            robot.setHandPositions(0);
+            robot.setHandPosition(0,1);
         }
     }
 }

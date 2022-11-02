@@ -219,20 +219,22 @@ public class RobotHardware_TT {
         armMotor.setPower(power);
     }
 
-    /**
-     * Send the two hand-servos to opposing (mirrored) positions, based on the passed offset.
-     *
-     * @param offset
-     */
-    public void setHandPositions(double offset) {
+
+   /* public void setHandPositions(double offset) {
         offset = Range.clip(offset, -0.5, 0.5);
         claw1.setPosition(MID_SERVO + offset);
         claw2.setPosition(MID_SERVO - offset);
-    }
+    }*/
     public void setHandPosition(double leftWheel, double rightWheel) {
         // Output the values to the motor drives.
         claw1.setPosition(leftWheel);
         claw2.setPosition(rightWheel);
+        if (leftWheel > 0.25 ) {
+            claw1.setPosition(0.25);
+        }
+        if (rightWheel<0.75) {
+            claw2.setPosition(0.75);
+        }
     }
     public boolean touchSensorNotPressed(){
         return touchSensor.getState();
