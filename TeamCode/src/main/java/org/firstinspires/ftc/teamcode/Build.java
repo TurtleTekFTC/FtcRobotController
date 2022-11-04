@@ -15,6 +15,9 @@ public class Build extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             robot.setHandPosition(0,1);
+            if (gamepad2.a) {
+            robot.setHandPosition(0.1,0.9);
+            }
         }
     }
 }
