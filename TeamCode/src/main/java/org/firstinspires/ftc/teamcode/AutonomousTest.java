@@ -20,9 +20,9 @@ public class AutonomousTest extends LinearOpMode{
             robot.setArmPower(0.5);
             sleep(100);
             robot.setArmPower(0);
-            robot.setHandPositions(0.25);
+            robot.setHandPosition(0.25,0.25);
             sleep(100);
-            robot.setHandPositions(0);
+            robot.setHandPosition(0,0);
             robot.setArmPower(-0.5);
             sleep(100);
             robot.setArmPower(0);

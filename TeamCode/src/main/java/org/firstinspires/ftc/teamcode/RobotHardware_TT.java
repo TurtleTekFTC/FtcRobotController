@@ -141,8 +141,8 @@ public class RobotHardware_TT {
         // Define and initialize ALL installed servos.
         claw1 = myOpMode.hardwareMap.get(Servo.class, "claw1");
         claw2 = myOpMode.hardwareMap.get(Servo.class, "claw2");
-        claw1.setPosition(MID_SERVO);
-        claw2.setPosition(MID_SERVO);
+        claw1.setPosition(1);
+        claw2.setPosition(0);
 
         touchSensor = myOpMode.hardwareMap.get(DigitalChannel.class,"touchSensor");
 
@@ -227,14 +227,20 @@ public class RobotHardware_TT {
     }*/
     public void setHandPosition(double leftWheel, double rightWheel) {
         // Output the values to the motor drives.
-        claw1.setPosition(leftWheel);
-        claw2.setPosition(rightWheel);
-        if (leftWheel > 0.25 ) {
-            claw1.setPosition(0.25);
+        if (leftWheel < 0.55 ) {
+            claw1.setPosition(0.55);
         }
-        if (rightWheel<0.75) {
-            claw2.setPosition(0.75);
+        else {
+            claw1.setPosition(leftWheel);
         }
+
+        if (rightWheel > 0.45) {
+            claw2.setPosition(0.45);
+        }
+        else {
+            claw2.setPosition(rightWheel);
+        }
+
     }
     public boolean touchSensorNotPressed(){
         return touchSensor.getState();
