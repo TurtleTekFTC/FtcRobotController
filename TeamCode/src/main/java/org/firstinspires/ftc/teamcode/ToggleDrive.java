@@ -10,8 +10,8 @@ public class ToggleDrive extends LinearOpMode {
     @Override
     public void runOpMode() {
         boolean isUsingArcade = false;
-        double servoPosition = 0;
-        double servoPosition1 = 1;
+        double servoPositionLeft = 1;
+        double servoPositionRight = 0;
         robot.init();
         waitForStart();
         while (opModeIsActive()) {
@@ -35,14 +35,14 @@ public class ToggleDrive extends LinearOpMode {
             if (gamepad2.left_bumper && gamepad2.right_bumper) {
             }
             else if (gamepad2.right_bumper) {
-                servoPosition = servoPosition + 0.01;
-                servoPosition1 = servoPosition1 -0.01;
-                robot.setHandPosition(servoPosition,servoPosition1);
+                servoPositionLeft = servoPositionLeft - 0.01;
+                servoPositionRight = servoPositionRight + 0.01;
+                robot.setHandPosition(servoPositionLeft,servoPositionRight);
             }
             else if (gamepad2.left_bumper) {
-                servoPosition = 0;
-                servoPosition1 = 1;
-                robot.setHandPosition(servoPosition,servoPosition1);
+                servoPositionLeft = 1;
+                servoPositionRight = 0;
+                robot.setHandPosition(servoPositionLeft,servoPositionRight);
             }
 
 
