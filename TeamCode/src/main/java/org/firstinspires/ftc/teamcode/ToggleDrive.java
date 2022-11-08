@@ -44,9 +44,6 @@ public class ToggleDrive extends LinearOpMode {
                 servoPositionRight = 0;
                 robot.setHandPosition(servoPositionLeft,servoPositionRight);
             }
-
-
-
         }
     }
 }
