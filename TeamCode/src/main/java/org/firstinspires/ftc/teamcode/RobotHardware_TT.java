@@ -33,6 +33,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.configuration.WebcamConfiguration;
 import com.qualcomm.robotcore.util.Range;
@@ -129,9 +130,13 @@ public class RobotHardware_TT {
 
         leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        armMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         leftDrive.setDirection(DcMotor.Direction.REVERSE);
         rightDrive.setDirection(DcMotor.Direction.FORWARD);
+        armMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
         // If there are encoders connected, switch to RUN_USING_ENCODER mode for greater accuracy
@@ -141,8 +146,8 @@ public class RobotHardware_TT {
         // Define and initialize ALL installed servos.
         claw1 = myOpMode.hardwareMap.get(Servo.class, "claw1");
         claw2 = myOpMode.hardwareMap.get(Servo.class, "claw2");
-        claw1.setPosition(1);
-        claw2.setPosition(0);
+        claw1.setPosition(0);
+        claw2.setPosition(1);
 
         touchSensor = myOpMode.hardwareMap.get(DigitalChannel.class,"touchSensor");
 
@@ -216,7 +221,13 @@ public class RobotHardware_TT {
      * @param power driving power (-1.0 to 1.0)
      */
     public void setArmPower(double power) {
-        armMotor.setPower(power);
+        if (getArmEncoderValue() <= 0 && power < 0){
+            armMotor.setPower(0);
+        }
+        else{
+            armMotor.setPower(power);
+        }
+
     }
 
 
@@ -227,15 +238,15 @@ public class RobotHardware_TT {
     }*/
     public void setHandPosition(double leftWheel, double rightWheel) {
         // Output the values to the motor drives.
-        if (leftWheel < 0.55 ) {
-            claw1.setPosition(0.55);
+        if (leftWheel > 0.35 ) {
+            claw1.setPosition(0.35);
         }
         else {
             claw1.setPosition(leftWheel);
         }
 
-        if (rightWheel > 0.45) {
-            claw2.setPosition(0.45);
+        if (rightWheel < 0.65) {
+            claw2.setPosition(0.65);
         }
         else {
             claw2.setPosition(rightWheel);
