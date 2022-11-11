@@ -15,10 +15,10 @@ public class Build extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             if (gamepad2.a) {
-                robot.setHandPosition(0.55,0.45);
+                robot.setHandPosition(0.35,0.65);
             }
             else {
-                robot.setHandPosition(1, 0);
+                robot.setHandPosition(0, 1);
             }
         }
     }
