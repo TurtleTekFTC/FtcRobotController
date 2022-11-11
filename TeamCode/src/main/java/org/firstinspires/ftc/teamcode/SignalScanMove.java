@@ -74,7 +74,7 @@ public class SignalScanMove extends LinearOpMode {
                 sleep(2000);
                 robot.driveDistance(1.5);
                 sleep(2000);
-            }//telemetry.update();
+            }
         }
     }
 
