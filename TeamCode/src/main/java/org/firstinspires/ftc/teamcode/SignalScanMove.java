@@ -47,18 +47,14 @@ public class SignalScanMove extends LinearOpMode {
                 sleep(2000);
                 robot.TurnLeft();
                 sleep(2000);
-                robot.driveDistance(2);
+                robot.driveDistance(2.75);
                 sleep(2000);
                 robot.TurnRight();
                 sleep(2000);
-                robot.driveDistance(1.75);
+                robot.driveDistance(2.25);
                 sleep(2000);
             } else if (recognizedObject == 1) {
-                robot.tankDrive(0.25, -0.25);
-                sleep(100);
-                robot.tankDrive(0,0);
-                sleep(2);
-                robot.driveDistance(2);
+                robot.driveDistance(3);
                 robot.tankDrive(0,0);
                 sleep(2);
             } else if (recognizedObject == 2) {
@@ -66,11 +62,11 @@ public class SignalScanMove extends LinearOpMode {
                 sleep(2000);
                 robot.TurnRight();
                 sleep(2000);
-                robot.driveDistance(1.5);
+                robot.driveDistance(2.25);
                 sleep(2000);
                 robot.TurnLeft();
                 sleep(2000);
-                robot.driveDistance(1.5);
+                robot.driveDistance(2.5);
                 sleep(2000);
             }
         }

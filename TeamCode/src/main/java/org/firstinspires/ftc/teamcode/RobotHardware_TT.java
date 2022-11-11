@@ -84,7 +84,7 @@ public class RobotHardware_TT {
     private Servo claw1;
     private Servo claw2;
     private DigitalChannel touchSensor;
-    private double secondToFeetRatio = 3.75;
+    private double secondToFeetRatio = 4.75;
         private static final String VUFORIA_KEY =
                 LicenseKey.key;
         private VuforiaLocalizer vuforia;
@@ -280,7 +280,7 @@ public class RobotHardware_TT {
         exposureControl.setMode(ExposureControl.Mode.Manual);
         // max exposure:1000
         // min exposure:0
-        exposureControl.setExposure(10, TimeUnit.MILLISECONDS);
+        exposureControl.setExposure(20, TimeUnit.MILLISECONDS);
         myOpMode.telemetry.update();
 
 
@@ -329,12 +329,12 @@ public class RobotHardware_TT {
     }
     public void TurnLeft() {
         tankDrive(-0.75, 0.75);
-        myOpMode.sleep(350);
+        myOpMode.sleep(585);
         tankDrive(0,0);
     }
     public void TurnRight() {
         tankDrive(0.75, -0.75);
-        myOpMode.sleep(330);
+        myOpMode.sleep(530);
         tankDrive(0,0);
     }
 }
