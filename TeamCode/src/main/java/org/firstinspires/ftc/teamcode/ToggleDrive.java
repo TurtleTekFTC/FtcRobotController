@@ -30,7 +30,7 @@ public class ToggleDrive extends LinearOpMode {
                 robot.arcadeDrive(-gamepad1.left_stick_y, gamepad1.right_stick_x);
             }
 
-            robot.setArmPower(-gamepad2.left_stick_y*0.3);
+            robot.setArmPower(-gamepad2.left_stick_y*0.4);
             telemetry.addData("Arm motor Encoder: ", robot.getArmEncoderValue());
 
             if (gamepad2.left_bumper && gamepad2.right_bumper) {

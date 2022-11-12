@@ -221,7 +221,7 @@ public class RobotHardware_TT {
      * @param power driving power (-1.0 to 1.0)
      */
     public void setArmPower(double power) {
-        if (getArmEncoderValue() <= 0 && power < 0){
+        if (getArmEncoderValue() <= 10 && power < 0){
             armMotor.setPower(0);
         }
         else{
