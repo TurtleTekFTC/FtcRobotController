@@ -329,10 +329,20 @@ public class RobotHardware_TT {
     }
     public void TurnLeft() {
         tankDrive(-0.75, 0.75);
-        myOpMode.sleep(585);
+        myOpMode.sleep(700);
         tankDrive(0,0);
     }
     public void TurnRight() {
+        tankDrive(0.75, -0.75);
+        myOpMode.sleep(590);
+        tankDrive(0,0);
+    }
+    public void TurnLeft1() {
+        tankDrive(-0.75, 0.75);
+        myOpMode.sleep(590);
+        tankDrive(0,0);
+    }
+    public void TurnRight1() {
         tankDrive(0.75, -0.75);
         myOpMode.sleep(530);
         tankDrive(0,0);

@@ -51,7 +51,7 @@ public class SignalScanMove extends LinearOpMode {
                 sleep(2000);
                 robot.TurnRight();
                 sleep(2000);
-                robot.driveDistance(2.25);
+                robot.driveDistance(2.5);
                 sleep(2000);
             } else if (recognizedObject == 1) {
                 robot.driveDistance(3);
@@ -60,11 +60,11 @@ public class SignalScanMove extends LinearOpMode {
             } else if (recognizedObject == 2) {
                 robot.driveDistance(0.5);
                 sleep(2000);
-                robot.TurnRight();
+                robot.TurnRight1();
                 sleep(2000);
                 robot.driveDistance(2.25);
                 sleep(2000);
-                robot.TurnLeft();
+                robot.TurnLeft1();
                 sleep(2000);
                 robot.driveDistance(2.5);
                 sleep(2000);
