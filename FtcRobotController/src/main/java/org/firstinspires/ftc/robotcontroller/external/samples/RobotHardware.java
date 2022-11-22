@@ -61,6 +61,10 @@ public class RobotHardware {
     // Define Motor and Servo objects  (Make them private so they can't be accessed externally)
     private DcMotor leftDrive;
     private DcMotor rightDrive;
+    private DcMotor leftFrontDrive;
+    private DcMotor rightFrontDrive;
+    private DcMotor leftBackDrive;
+    private DcMotor rightBackDrive;
     private DcMotor armMotor;
     private Servo claw1;
     private Servo claw2;
@@ -86,6 +90,10 @@ public class RobotHardware {
         // Define and Initialize Motors (note: need to use reference to actual OpMode).
         leftDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive");
+        leftFrontDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_front_drive");
+        rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_front_drive");
+        leftBackDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_back_drive");
+        rightBackDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_back_drive");
         armMotor   = myOpMode.hardwareMap.get(DcMotor.class, "arm");
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
