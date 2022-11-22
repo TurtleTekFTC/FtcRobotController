@@ -81,6 +81,10 @@ public class RobotHardware_TT {
     private DcMotor leftDrive;
     private DcMotor rightDrive;
     private DcMotor armMotor;
+    private DcMotor leftFrontDrive;
+    private DcMotor rightFrontDrive;
+    private DcMotor leftBackDrive;
+    private DcMotor rightBackDrive;
     private Servo claw1;
     private Servo claw2;
     private DigitalChannel touchSensor;
@@ -122,6 +126,10 @@ public class RobotHardware_TT {
         // Define and Initialize Motors (note: need to use reference to actual OpMode).
         leftDrive  = myOpMode.hardwareMap.get(DcMotor.class, "motorLeft");
         rightDrive = myOpMode.hardwareMap.get(DcMotor.class, "motorRight");
+        leftFrontDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_front_drive");
+        rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_front_drive");
+        leftBackDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_back_drive");
+        rightBackDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_back_drive");
         armMotor   = myOpMode.hardwareMap.get(DcMotor.class, "motorArm");
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
