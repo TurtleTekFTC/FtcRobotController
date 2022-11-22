@@ -199,6 +199,13 @@ public class RobotHardware_TT {
         leftDrive.setPower(-leftWheel);
         rightDrive.setPower(-rightWheel);
     }
+
+    public void mecanumDrive(double y, double x, double rx) {
+        leftFrontDrive.setPower(y + x + rx);
+        rightFrontDrive.setPower(y - x + rx);
+        leftBackDrive.setPower(y - x - rx);
+        rightBackDrive.setPower(y + x - rx);
+    }
     /**
      * The robot eats pizza. Not really. It drives for a distance of x feet.
      *
