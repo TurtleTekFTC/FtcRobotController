@@ -12,6 +12,7 @@ public class ToggleDrive extends LinearOpMode {
         boolean isUsingArcade = false;
         double servoPositionLeft = 0;
         double servoPositionRight = 1;
+        double heightArm = 0;
         robot.init();
         waitForStart();
         while (opModeIsActive()) {
@@ -46,6 +47,11 @@ public class ToggleDrive extends LinearOpMode {
                 servoPositionRight = 1;
                 robot.setHandPosition(servoPositionLeft,servoPositionRight);
             }telemetry.update();
+
+            if (gamepad2.a) {
+                heightArm = 3;
+                robot.armHeight(heightArm);
+            }
         }
     }
 }
