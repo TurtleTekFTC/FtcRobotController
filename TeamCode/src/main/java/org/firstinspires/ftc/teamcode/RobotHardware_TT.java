@@ -89,9 +89,9 @@ public class RobotHardware_TT {
     private Servo claw2;
     private DigitalChannel touchSensor;
     private double secondToFeetRatio = 4.75;
-        private static final String VUFORIA_KEY =
+    private static final String VUFORIA_KEY =
                 LicenseKey.key;
-        private VuforiaLocalizer vuforia;
+    private VuforiaLocalizer vuforia;
 
         public TFObjectDetector tfod;
         private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
