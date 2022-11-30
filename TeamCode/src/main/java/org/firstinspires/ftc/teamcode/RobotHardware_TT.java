@@ -31,17 +31,27 @@ package org.firstinspires.ftc.teamcode;
 
 
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.configuration.WebcamConfiguration;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorBNO055IMU;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.Camera;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.controls.ExposureControl;
+import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
@@ -93,6 +103,7 @@ public class RobotHardware_TT {
                 LicenseKey.key;
     private VuforiaLocalizer vuforia;
 
+
         public TFObjectDetector tfod;
         private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
         public static final String[] LABELS = {
@@ -104,7 +115,7 @@ public class RobotHardware_TT {
 
 
 
-
+    IMU imu;
     // Define Drive constants.  Make them public so they CAN be used by the calling OpMode
     public static final double MID_SERVO       =  0.5 ;
     public static final double HAND_SPEED      =  0.02 ;  // sets rate to move servo
@@ -131,7 +142,7 @@ public class RobotHardware_TT {
         leftBackDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_back_drive");
         rightBackDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_back_drive");*/
         armMotor   = myOpMode.hardwareMap.get(DcMotor.class, "motorArm");
-
+        imu = myOpMode.hardwareMap.get(IMU.class, "imu");
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -146,6 +157,10 @@ public class RobotHardware_TT {
         armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
+        RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.FORWARD;
+        RevHubOrientationOnRobot.UsbFacingDirection  usbDirection  = RevHubOrientationOnRobot.UsbFacingDirection.UP;
+        RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);
+        imu.initialize(new IMU.Parameters(orientationOnRobot));
 
         // If there are encoders connected, switch to RUN_USING_ENCODER mode for greater accuracy
         // leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -162,6 +177,7 @@ public class RobotHardware_TT {
         myOpMode.telemetry.addData(">", "Hardware Initialized");
         myOpMode.telemetry.update();
     }
+
 
     /**
      * Calculates the left/right motor powers required to achieve the requested
@@ -206,6 +222,10 @@ public class RobotHardware_TT {
         leftBackDrive.setPower(y - x - rx);
         rightBackDrive.setPower(y + x - rx);
     }
+
+    public double getAngle(){
+        heading   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+    }
     /**
      * The robot eats pizza. Not really. It drives for a distance of x feet.
      *
@@ -221,6 +241,10 @@ public class RobotHardware_TT {
         tankDrive(0,0);
 
 
+    }
+
+    public void turnGyroLeft(double angle) {
+        return
     }
 
     public double getArmEncoderValue() {
