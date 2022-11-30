@@ -52,6 +52,18 @@ public class ToggleDrive extends LinearOpMode {
                 heightArm = 3;
                 robot.armHeight(heightArm);
             }
+            else if (gamepad2.b) {
+                heightArm = 17.5;
+                robot.armHeight(heightArm);
+            }
+            else if (gamepad2.y) {
+                heightArm = 27.5;
+                robot.armHeight(heightArm);
+            }
+            else if (gamepad2.x) {
+                heightArm = 37.5;
+                robot.armHeight(heightArm);
+            }
         }
     }
 }
