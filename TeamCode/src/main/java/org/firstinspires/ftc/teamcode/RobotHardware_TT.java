@@ -260,21 +260,22 @@ public class RobotHardware_TT {
      * @param power driving power (-1.0 to 1.0)
      */
     public void setArmPower(double power) {
-        if (getArmEncoderValue() <= 10 && power < 0){
-            armMotor.setPower(0);
+        while (getArmEncoderValue() <= 10) {
+            if (getArmEncoderValue() <= 10 && power < 0) {
+                armMotor.setPower(0);
+            } else {
+                armMotor.setPower(power);
+            }
         }
-        else{
-            armMotor.setPower(power);
-        }
-
     }
     public void armHeight(double height) {
         setArmPower(-0.4);
-        if (getArmInches() != height) {
-            setArmPower(1);
-        }
-        else {
-            setArmPower(0);
+        while (getArmInches() < height) {
+            if (getArmInches() < height) {
+                setArmPower(0.4);
+            } else {
+                setArmPower(0);
+            }
         }
     }
 
