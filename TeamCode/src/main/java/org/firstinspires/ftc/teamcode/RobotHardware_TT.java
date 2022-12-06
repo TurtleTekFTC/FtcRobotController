@@ -223,8 +223,8 @@ public class RobotHardware_TT {
         rightBackDrive.setPower(y + x - rx);
     }
 
-    public double getAngle(){
-        heading   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+    public void getAngle(){
+        double heading = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
     }
     /**
      * The robot eats pizza. Not really. It drives for a distance of x feet.
