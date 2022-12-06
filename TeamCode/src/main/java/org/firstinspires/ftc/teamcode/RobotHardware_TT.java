@@ -244,7 +244,7 @@ public class RobotHardware_TT {
     }
 
     public void turnGyroLeft(double angle) {
-        return
+        return;
     }
 
     public double getArmEncoderValue() {
