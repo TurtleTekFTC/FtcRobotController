@@ -223,9 +223,9 @@ public class RobotHardware_TT {
         rightBackDrive.setPower(y + x - rx);
     }
 
-    public void getAngle(){
+   /* public void getAngle(){
         Orientation heading = imu.getRobotOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-    }
+    }*/
     /**
      * The robot eats pizza. Not really. It drives for a distance of x feet.
      *
@@ -243,8 +243,7 @@ public class RobotHardware_TT {
 
     }
 
-    public void turnGyroLeft(double angle) {
-    }
+    //public void turnGyroLeft(double angle) {}
 
     public double getArmEncoderValue() {
          return armMotor.getCurrentPosition();
@@ -259,13 +258,11 @@ public class RobotHardware_TT {
      * @param power driving power (-1.0 to 1.0)
      */
     public void setArmPower(double power) {
-        while (getArmEncoderValue() <= 10) {
             if (getArmEncoderValue() <= 10 && power < 0) {
                 armMotor.setPower(0);
             } else {
                 armMotor.setPower(power);
             }
-        }
     }
     public void armHeight(double height) {
         setArmPower(-0.4);

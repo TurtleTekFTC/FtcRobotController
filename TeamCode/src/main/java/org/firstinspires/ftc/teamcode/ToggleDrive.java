@@ -16,10 +16,10 @@ public class ToggleDrive extends LinearOpMode {
         robot.init();
         waitForStart();
         while (opModeIsActive()) {
-            if (gamepad1.y == true){
+            if (gamepad1.dpad_up == true){
                 isUsingArcade = true;
             }
-            if (gamepad1.x == true) {
+            if (gamepad1.dpad_down == true) {
                 isUsingArcade = false;
             }
 
@@ -34,6 +34,7 @@ public class ToggleDrive extends LinearOpMode {
             robot.setArmPower(-gamepad2.left_stick_y*0.4);
             telemetry.addData("Arm motor Encoder: ", robot.getArmEncoderValue());
             telemetry.addData("Arm Inches: ", robot.getArmInches());
+            telemetry.update();
 
             if (gamepad2.left_bumper && gamepad2.right_bumper) {
             }
@@ -46,7 +47,8 @@ public class ToggleDrive extends LinearOpMode {
                 servoPositionLeft = 0;
                 servoPositionRight = 1;
                 robot.setHandPosition(servoPositionLeft,servoPositionRight);
-            }telemetry.update();
+            }
+            telemetry.update();
 
             if (gamepad2.a) {
                 heightArm = 3;
