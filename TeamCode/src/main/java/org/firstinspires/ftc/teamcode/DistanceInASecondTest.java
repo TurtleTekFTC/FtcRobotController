@@ -14,7 +14,7 @@ public class DistanceInASecondTest extends LinearOpMode{
         waitForStart();
 
 
-        robot.driveDistance(2);
+        robot.driveDistance(2.6);
 
     }
 }

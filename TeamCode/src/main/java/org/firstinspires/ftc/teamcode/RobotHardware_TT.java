@@ -98,7 +98,6 @@ public class RobotHardware_TT {
     private Servo claw1;
     private Servo claw2;
     private DigitalChannel touchSensor;
-    private double secondToFeetRatio = 4.75;
     private static final String VUFORIA_KEY =
                 LicenseKey.key;
     private VuforiaLocalizer vuforia;
@@ -156,6 +155,10 @@ public class RobotHardware_TT {
         armMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.FORWARD;
         RevHubOrientationOnRobot.UsbFacingDirection  usbDirection  = RevHubOrientationOnRobot.UsbFacingDirection.UP;
@@ -229,21 +232,35 @@ public class RobotHardware_TT {
     /**
      * The robot eats pizza. Not really. It drives for a distance of x feet.
      *
-     * @param feet The distance that the robot will drive.
      */
+    public double getWheelEncoderValue() {
+        return leftDrive.getCurrentPosition();
+    }
+    public double getWheelInches() {
+        return getWheelEncoderValue() * .0219;
+    }
     public void driveDistance(double feet) {
-        double secondsToDrive = feet/secondToFeetRatio;
-        double millisecondsToDrive = secondsToDrive*1000;
-        tankDrive(1,1);
-        //myOpMode.telemetry.addLine(String.valueOf(millisecondsToDrive));
-        //myOpMode.telemetry.update();
-        myOpMode.sleep((long) millisecondsToDrive);
+        rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        myOpMode.sleep(1000);
+        double inches = (feet * 12)*-1;
+        myOpMode.telemetry.addData("inches : ", inches);
+        myOpMode.telemetry.update();
+        myOpMode.sleep(1000);
+        tankDrive(.15, .15);
+        while (getWheelInches() > inches && myOpMode.opModeIsActive()) {
+                tankDrive(.15, .15);
+                myOpMode.telemetry.addData("inches", getWheelInches());
+                myOpMode.telemetry.update();
+        }
         tankDrive(0,0);
-
-
+        myOpMode.sleep(1000);
     }
 
     //public void turnGyroLeft(double angle) {}
+
 
     public double getArmEncoderValue() {
          return armMotor.getCurrentPosition();
@@ -378,7 +395,7 @@ public class RobotHardware_TT {
     }
     public void TurnRight() {
         tankDrive(0.75, -0.75);
-        myOpMode.sleep(590);
+        myOpMode.sleep(650);
         tankDrive(0,0);
     }
     public void TurnLeft1() {

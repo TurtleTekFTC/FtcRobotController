@@ -44,30 +44,29 @@ public class SignalScanMove extends LinearOpMode {
         if (objectRecognized) {
             if (recognizedObject == 0) {
                 robot.driveDistance(0.5);
-                sleep(2000);
+                sleep(100);
                 robot.TurnLeft();
-                sleep(2000);
-                robot.driveDistance(2.75);
-                sleep(2000);
+                sleep(100);
+                robot.driveDistance(2.3);
+                sleep(100);
                 robot.TurnRight();
-                sleep(2000);
-                robot.driveDistance(2.5);
-                sleep(2000);
+                sleep(100);
+                robot.driveDistance(2.6);
+                sleep(100);
             } else if (recognizedObject == 1) {
-                robot.driveDistance(3);
-                robot.tankDrive(0,0);
+                robot.driveDistance(2.66);
                 sleep(2);
             } else if (recognizedObject == 2) {
-                robot.driveDistance(0.5);
-                sleep(2000);
+                robot.driveDistance(0.083);
+                sleep(100);
                 robot.TurnRight1();
-                sleep(2000);
-                robot.driveDistance(2.25);
-                sleep(2000);
+                sleep(100);
+                robot.driveDistance(2);
+                sleep(100);
                 robot.TurnLeft1();
-                sleep(2000);
-                robot.driveDistance(2.5);
-                sleep(2000);
+                sleep(100);
+                robot.driveDistance(2.6);
+                sleep(100);
             }
         }
     }
