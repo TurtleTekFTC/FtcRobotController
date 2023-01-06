@@ -268,7 +268,6 @@ public class RobotHardware_TT {
             }
     }
     public void armHeight(double height) {
-        setArmPower(-0.4);
             if (getArmInches() < height) {
                 setArmPower(0.4);
             } else {
