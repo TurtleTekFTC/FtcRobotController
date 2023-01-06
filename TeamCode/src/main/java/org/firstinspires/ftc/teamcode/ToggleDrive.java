@@ -40,6 +40,8 @@ public class ToggleDrive extends LinearOpMode {
                 servoPositionLeft = servoPositionLeft + 0.01;
                 servoPositionRight = servoPositionRight - 0.01;
                 robot.setHandPosition(servoPositionLeft,servoPositionRight);
+                telemetry.addData("Servo Left: ", servoPositionLeft);
+                telemetry.addData("Servo Right: ",servoPositionRight);
             }
             else if (gamepad2.left_bumper) {
                 servoPositionLeft = 0;
@@ -60,6 +62,7 @@ public class ToggleDrive extends LinearOpMode {
             else if (gamepad2.x) {
                 heightArm = 37.5;
             }
+            if
 
             if (gamepad2.left_stick_y > 0.05 || gamepad2.left_stick_y < -0.05) {
                 robot.setArmPower(-gamepad2.left_stick_y * 0.6);
