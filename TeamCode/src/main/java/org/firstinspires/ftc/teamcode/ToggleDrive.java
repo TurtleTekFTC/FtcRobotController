@@ -68,8 +68,7 @@ public class ToggleDrive extends LinearOpMode {
             } else {
                 robot.armHeight(heightArm);
             }
-            telemetry.addData("Servo Left: ", servoPositionLeft);
-            telemetry.addData("Servo Right: ",servoPositionRight);
+
             telemetry.addData("Arm motor Encoder: ", robot.getArmEncoderValue());
             telemetry.addData("Arm Inches: ", robot.getArmInches());
 

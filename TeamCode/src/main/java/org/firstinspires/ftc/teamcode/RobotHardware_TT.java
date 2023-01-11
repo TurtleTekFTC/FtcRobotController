@@ -37,6 +37,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -158,6 +159,54 @@ public class RobotHardware_TT {
         // Define and initialize ALL installed servos.
         claw1 = myOpMode.hardwareMap.get(Servo.class, "claw1");
         claw2 = myOpMode.hardwareMap.get(Servo.class, "claw2");
+
+
+        touchSensor = myOpMode.hardwareMap.get(DigitalChannel.class,"touchSensor");
+
+        myOpMode.telemetry.addData(">", "Hardware Initialized");
+        myOpMode.telemetry.update();
+    }
+
+    public void initAuto()    {
+        // Define and Initialize Motors (note: need to use reference to actual OpMode).
+        leftDrive  = myOpMode.hardwareMap.get(DcMotor.class, "motorLeft");
+        rightDrive = myOpMode.hardwareMap.get(DcMotor.class, "motorRight");
+        /*leftFrontDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_front_drive");
+        rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_front_drive");
+        leftBackDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_back_drive");
+        rightBackDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_back_drive");*/
+        armMotor   = myOpMode.hardwareMap.get(DcMotor.class, "motorArm");
+        imu = myOpMode.hardwareMap.get(IMU.class, "imu");
+        // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
+        // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
+        // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
+
+        leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        armMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        leftDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightDrive.setDirection(DcMotor.Direction.FORWARD);
+        armMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.FORWARD;
+        RevHubOrientationOnRobot.UsbFacingDirection  usbDirection  = RevHubOrientationOnRobot.UsbFacingDirection.UP;
+        RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);
+        imu.initialize(new IMU.Parameters(orientationOnRobot));
+
+        // If there are encoders connected, switch to RUN_USING_ENCODER mode for greater accuracy
+        // leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        // rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        // Define and initialize ALL installed servos.
+        claw1 = myOpMode.hardwareMap.get(Servo.class, "claw1");
+        claw2 = myOpMode.hardwareMap.get(Servo.class, "claw2");
         claw1.setPosition(0);
         claw2.setPosition(1);
 
@@ -230,19 +279,20 @@ public class RobotHardware_TT {
         rightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        myOpMode.sleep(1000);
+        //myOpMode.sleep(1000);
         double inches = (feet * 12)*-1;
         myOpMode.telemetry.addData("inches : ", inches);
         myOpMode.telemetry.update();
-        myOpMode.sleep(1000);
+        //myOpMode.sleep(1000);
         tankDrive(.15, .15);
         while (getWheelInches() > inches && myOpMode.opModeIsActive()) {
                 tankDrive(.15, .15);
                 myOpMode.telemetry.addData("inches", getWheelInches());
                 myOpMode.telemetry.update();
+                armHeight(5);
         }
         tankDrive(0,0);
-        myOpMode.sleep(1000);
+       // myOpMode.sleep(1000);
     }
 
     //public void turnGyroLeft(double angle) {}
@@ -373,23 +423,29 @@ public class RobotHardware_TT {
     }
     public void TurnLeft() {
         tankDrive(-0.75, 0.75);
-        myOpMode.sleep(700);
+        wake(700);
         tankDrive(0,0);
     }
     public void TurnRight() {
         tankDrive(0.75, -0.75);
-        myOpMode.sleep(650);
+        wake(650);
         tankDrive(0,0);
     }
     public void TurnLeft1() {
         tankDrive(-0.75, 0.75);
-        myOpMode.sleep(590);
+        wake(590);
         tankDrive(0,0);
     }
     public void TurnRight1() {
         tankDrive(0.75, -0.75);
-        myOpMode.sleep(530);
+        wake(530);
         tankDrive(0,0);
+    }
+    public void wake(long milliseconds) {
+        ElapsedTime elapsedTime = new ElapsedTime();
+        while (milliseconds > elapsedTime.time()) {
+            armHeight(5);
+        }
     }
 }
 
