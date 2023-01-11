@@ -13,7 +13,7 @@ public class ToggleDrive extends LinearOpMode {
         double servoPositionLeft = 0;
         double servoPositionRight = 1;
         double heightArm = 0;
-        robot.init();
+        robot.initAuto();
         waitForStart();
         while (opModeIsActive()) {
             if (gamepad1.dpad_up == true){
