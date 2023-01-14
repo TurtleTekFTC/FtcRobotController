@@ -13,6 +13,8 @@ public class ToggleDrive extends LinearOpMode {
         double servoPositionLeft = 0;
         double servoPositionRight = 1;
         double heightArm = 0;
+        double Y;
+        double X;
         robot.initAuto();
         waitForStart();
         while (opModeIsActive()) {
@@ -28,7 +30,17 @@ public class ToggleDrive extends LinearOpMode {
             }
 
             if (isUsingArcade == true){
-                robot.arcadeDrive(-gamepad1.left_stick_y*0.8, gamepad1.right_stick_x*0.9);
+                if (-gamepad1.right_stick_x > 0) {
+                    X = Math.pow(-gamepad1.right_stick_x, 2);
+                } else {
+                    X = -Math.pow(-gamepad1.right_stick_x, 2);
+                }
+                if (-gamepad1.left_stick_y > 0) {
+                    Y = Math.pow(-gamepad1.left_stick_y, 2);
+                } else {
+                    Y = -Math.pow(-gamepad1.left_stick_y, 2);
+                }
+                robot.arcadeDrive(Y, X);
             }
 
 
