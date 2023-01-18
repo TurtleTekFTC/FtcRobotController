@@ -289,7 +289,7 @@ public class RobotHardware_TT {
                 tankDrive(.15, .15);
                 myOpMode.telemetry.addData("inches", getWheelInches());
                 myOpMode.telemetry.update();
-                armHeight(5);
+               // armHeight(5);
         }
         tankDrive(0,0);
        // myOpMode.sleep(1000);
@@ -444,7 +444,7 @@ public class RobotHardware_TT {
     public void wake(long milliseconds) {
         ElapsedTime elapsedTime = new ElapsedTime();
         while (milliseconds > elapsedTime.time()) {
-            armHeight(5);
+           // armHeight(5);
         }
     }
 }
