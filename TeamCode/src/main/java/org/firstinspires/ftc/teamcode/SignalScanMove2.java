@@ -43,7 +43,7 @@ public class SignalScanMove2 extends LinearOpMode {
         }
         if (objectRecognized) {
             if (recognizedObject == 0) {
-                robot.driveDistance(0.5);
+                robot.driveDistance(0.2);
                 sleep(100);
                 robot.TurnLeft();
                 sleep(100);

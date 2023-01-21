@@ -279,20 +279,20 @@ public class RobotHardware_TT {
         rightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        //myOpMode.sleep(1000);
+        myOpMode.sleep(100);
         double inches = (feet * 12)*-1;
-        myOpMode.telemetry.addData("inches : ", inches);
-        myOpMode.telemetry.update();
-        //myOpMode.sleep(1000);
-        tankDrive(.15, .15);
+        //myOpMode.telemetry.addData("inches : ", inches);
+        //myOpMode.telemetry.update();
+        myOpMode.sleep(100);
+        tankDrive(.25, .25);
         while (getWheelInches() > inches && myOpMode.opModeIsActive()) {
-                tankDrive(.15, .15);
+                tankDrive(.25, .25);
                 myOpMode.telemetry.addData("inches", getWheelInches());
                 myOpMode.telemetry.update();
                // armHeight(5);
         }
         tankDrive(0,0);
-       // myOpMode.sleep(1000);
+        myOpMode.sleep(100);
     }
 
     //public void turnGyroLeft(double angle) {}
@@ -374,7 +374,7 @@ public class RobotHardware_TT {
         exposureControl.setMode(ExposureControl.Mode.Manual);
         // max exposure:1000
         // min exposure:0
-        exposureControl.setExposure(20, TimeUnit.MILLISECONDS);
+        exposureControl.setExposure(10, TimeUnit.MILLISECONDS);
         myOpMode.telemetry.update();
 
 
@@ -423,28 +423,28 @@ public class RobotHardware_TT {
     }
     public void TurnLeft() {
         tankDrive(-0.75, 0.75);
-        wake(700);
+        myOpMode.sleep(800);
         tankDrive(0,0);
     }
     public void TurnRight() {
         tankDrive(0.75, -0.75);
-        wake(650);
+        myOpMode.sleep(750);
         tankDrive(0,0);
     }
     public void TurnLeft1() {
         tankDrive(-0.75, 0.75);
-        wake(590);
+        myOpMode.sleep(590);
         tankDrive(0,0);
     }
     public void TurnRight1() {
         tankDrive(0.75, -0.75);
-        wake(530);
+        myOpMode.sleep(700);
         tankDrive(0,0);
     }
     public void wake(long milliseconds) {
         ElapsedTime elapsedTime = new ElapsedTime();
         while (milliseconds > elapsedTime.time()) {
-           // armHeight(5);
+            armHeight(5);
         }
     }
 }
