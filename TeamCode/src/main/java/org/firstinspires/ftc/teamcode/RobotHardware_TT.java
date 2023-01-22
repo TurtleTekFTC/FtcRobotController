@@ -374,7 +374,7 @@ public class RobotHardware_TT {
         exposureControl.setMode(ExposureControl.Mode.Manual);
         // max exposure:1000
         // min exposure:0
-        exposureControl.setExposure(10, TimeUnit.MILLISECONDS);
+        exposureControl.setExposure(25, TimeUnit.MILLISECONDS);
         myOpMode.telemetry.update();
 
 
@@ -433,12 +433,12 @@ public class RobotHardware_TT {
     }
     public void TurnLeft1() {
         tankDrive(-0.75, 0.75);
-        myOpMode.sleep(590);
+        myOpMode.sleep(750);
         tankDrive(0,0);
     }
     public void TurnRight1() {
         tankDrive(0.75, -0.75);
-        myOpMode.sleep(700);
+        myOpMode.sleep(710);
         tankDrive(0,0);
     }
     public void wake(long milliseconds) {

@@ -13,6 +13,10 @@ public class SignalScanMove2 extends LinearOpMode {
     public void runOpMode() {
         robot.initAuto();
         robot.initCamera();
+        // Signal sleeve!!!
+        // SignalScanMove!!
+        //Gyro turning!!!!
+        // Due Feb 15!
 
         waitForStart();
         boolean objectRecognized = false;
@@ -57,11 +61,11 @@ public class SignalScanMove2 extends LinearOpMode {
                 robot.driveDistance(2.66);
                 sleep(2);
             } else if (recognizedObject == 2) {
-                robot.driveDistance(0.083);
+                robot.driveDistance(0.2);
                 sleep(100);
                 robot.TurnRight1();
                 sleep(100);
-                robot.driveDistance(2.6);
+                robot.driveDistance(2);
                 sleep(100);
                 robot.TurnLeft1();
                 sleep(100);

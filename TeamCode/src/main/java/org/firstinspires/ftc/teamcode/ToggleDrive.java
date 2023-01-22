@@ -25,8 +25,9 @@ public class ToggleDrive extends LinearOpMode {
                 isUsingArcade = false;
             }
 
-            // make button to switch front!
+            // make button to switch front!!!
             //Due Feb 15
+
 
             if (isUsingArcade == false){
                 robot.tankDrive(-gamepad1.left_stick_y*0.8, -gamepad1.right_stick_y*0.8);
@@ -43,7 +44,7 @@ public class ToggleDrive extends LinearOpMode {
                 } else {
                     Y = -Math.pow(-gamepad1.left_stick_y, 2);
                 }
-                robot.arcadeDrive(Y, X);
+                robot.arcadeDrive(Y*0.8, X*0.8);
             }
 
 
