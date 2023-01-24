@@ -80,7 +80,7 @@ public class ToggleDrive extends LinearOpMode {
 
 
             if (gamepad2.left_stick_y > 0.05 || gamepad2.left_stick_y < -0.05) {
-                robot.setArmPower(-gamepad2.left_stick_y * 0.8);
+                robot.setArmPower(-gamepad2.left_stick_y);
             } else {
                 robot.armHeight(heightArm);
             }
