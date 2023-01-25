@@ -13,8 +13,9 @@ public class ToggleDrive extends LinearOpMode {
         double servoPositionLeft = 0;
         double servoPositionRight = 1;
         double heightArm = 0;
-        double Y;
-        double X;
+        double y;
+        double x;
+        boolean front = true;
         robot.initAuto();
         waitForStart();
         while (opModeIsActive()) {
@@ -25,27 +26,42 @@ public class ToggleDrive extends LinearOpMode {
                 isUsingArcade = false;
             }
 
-            // make button to switch front!!!
-            //Due Feb 15
-
-
-            if (isUsingArcade == false){
-                robot.tankDrive(-gamepad1.left_stick_y*0.8, -gamepad1.right_stick_y*0.8);
+           
+            if (gamepad1.x) {
+                front = false;
+            } else {
+                front = true;
             }
 
-            if (isUsingArcade == true){
-                if (-gamepad1.right_stick_x > 0) {
-                    X = Math.pow(-gamepad1.right_stick_x, 2);
-                } else {
-                    X = -Math.pow(-gamepad1.right_stick_x, 2);
+            if (front==false) {
+                if (isUsingArcade == false){
+                    x = -getSquare(-gamepad1.right_stick_y);
+                    y = -getSquare(-gamepad1.left_stick_y);
+                    robot.tankDrive(y*0.8, x*0.8);
                 }
-                if (-gamepad1.left_stick_y > 0) {
-                    Y = Math.pow(-gamepad1.left_stick_y, 2);
-                } else {
-                    Y = -Math.pow(-gamepad1.left_stick_y, 2);
+
+                if (isUsingArcade == true){
+                    x = -getSquare(-gamepad1.right_stick_x);
+                    y = -getSquare(-gamepad1.left_stick_y);
+                    robot.arcadeDrive(y*0.8, x*0.8);
+
                 }
-                robot.arcadeDrive(Y*0.8, X*0.8);
+            } else {
+                if (isUsingArcade == false){
+                    x = getSquare(-gamepad1.right_stick_y);
+                    y = getSquare(-gamepad1.left_stick_y);
+                    robot.tankDrive(y*0.8, x*0.8);
+                }
+
+                if (isUsingArcade == true){
+                    x = getSquare(-gamepad2.right_stick_x);
+                    y = getSquare(-gamepad1.left_stick_y);
+                    robot.arcadeDrive(y*0.8, x*0.8);
+                }
             }
+
+
+
 
 
 
@@ -91,5 +107,17 @@ public class ToggleDrive extends LinearOpMode {
             telemetry.update();
         }
     }
+
+    private double getSquare(double stick) {
+        double a;
+        if (stick > 0) {
+            a = -Math.pow(stick, 2);
+        } else {
+            a = Math.pow(stick, 2);
+        }
+        return a;
+    }
+
+
 }
 
