@@ -63,9 +63,11 @@ public class SignalScanMove extends LinearOpMode {
                 robot.wake(100);
                 robot.driveDistance(2.6);
                 robot.wake(100);
+                robot.armHeight(3);
             } else if (recognizedObject == 1) {
                 robot.driveDistance(2.66);
                 robot.wake(2);
+                robot.armHeight(3);
             } else if (recognizedObject == 2) {
                 robot.driveDistance(0.083);
                 robot.wake(100);
@@ -77,6 +79,7 @@ public class SignalScanMove extends LinearOpMode {
                 robot.wake(100);
                 robot.driveDistance(2.6);
                 robot.wake(100);
+                robot.armHeight(3);
             }
         }
     }
