@@ -38,6 +38,7 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.ReadWriteFile;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -45,7 +46,9 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.controls.Exposur
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
+import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -85,8 +88,8 @@ public class RobotHardware_TT {
     private Servo claw1;
     private Servo claw2;
     private DigitalChannel touchSensor;
-    private static final String VUFORIA_KEY =
-                LicenseKey.key;
+    private double pastEncoder = Double.NEGATIVE_INFINITY;
+    private static final String VUFORIA_KEY = LicenseKey.key;
     private VuforiaLocalizer vuforia;
 
 
@@ -289,13 +292,23 @@ public class RobotHardware_TT {
                 tankDrive(.25, .25);
                 myOpMode.telemetry.addData("inches", getWheelInches());
                 myOpMode.telemetry.update();
-               // armHeight(5);
+                armHeight(5);
         }
         tankDrive(0,0);
         myOpMode.sleep(100);
     }
 
-    //public void turnGyroLeft(double angle) {}
+    private double getPastEncoder() {
+        String Encoder;
+        if (pastEncoder == Double.NEGATIVE_INFINITY){
+            String filename = "AutoEncoder.txt";
+            File file = AppUtil.getInstance().getSettingsFile(filename);
+            Encoder = ReadWriteFile.readFile(file);
+            pastEncoder = Double.parseDouble(Encoder);
+            myOpMode.telemetry.addData("Encoder value: ", Encoder);
+        }
+        return pastEncoder;
+    }
 
 
     public double getArmEncoderValue() {
