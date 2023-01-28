@@ -15,7 +15,6 @@ public class ToggleDrive extends LinearOpMode {
     @Override
     public void runOpMode() {
         String filename = "AutoEncoder.txt";
-
         boolean isUsingArcade = false;
         double servoPositionLeft = 0;
         double servoPositionRight = 1;
@@ -113,7 +112,6 @@ public class ToggleDrive extends LinearOpMode {
             telemetry.update();
         }
         File file = AppUtil.getInstance().getSettingsFile(filename);
-        ReadWriteFile.writeFile(file, "0");
         ReadWriteFile.writeFile(file, "0");
     }
 

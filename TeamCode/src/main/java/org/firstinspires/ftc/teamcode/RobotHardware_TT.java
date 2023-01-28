@@ -305,15 +305,15 @@ public class RobotHardware_TT {
             String filename = "AutoEncoder.txt";
             File file = AppUtil.getInstance().getSettingsFile(filename);
             Encoder = ReadWriteFile.readFile(file);
-            pastEncoder = Double.parseDouble(Encoder);
+            pastEncoder = Integer.parseInt(Encoder);
             myOpMode.telemetry.addData("Encoder value: ", Encoder);
         }
         return pastEncoder;
     }
 
 
-    public int getArmEncoderValue() {
-         return armMotor.getCurrentPosition();
+    public double getArmEncoderValue() {
+         return armMotor.getCurrentPosition() + getPastEncoder();
     }
     public double getArmInches() {
         return getArmEncoderValue() * .0082;
@@ -325,7 +325,7 @@ public class RobotHardware_TT {
      * @param power driving power (-1.0 to 1.0)
      */
     public void setArmPower(double power) {
-            if (getArmEncoderValue() <= 10 && power < 0) {
+            if (getArmEncoderValue() <=  10 && power < 0) {
                 armMotor.setPower(0);
             } else {
                 armMotor.setPower(power);
@@ -333,8 +333,8 @@ public class RobotHardware_TT {
     }
 
     public void armHeight(double height) {
-        if (getArmInches() < height - getPastEncoder()) {
-            setArmPower(1);
+        if (getArmInches()  < height) {
+            setArmPower(0.8);
         } else {
             setArmPower(0);
         }

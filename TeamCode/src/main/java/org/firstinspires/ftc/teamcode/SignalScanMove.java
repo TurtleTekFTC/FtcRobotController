@@ -18,6 +18,9 @@ public class SignalScanMove extends LinearOpMode {
     public void runOpMode() {
         robot.initAuto();
         robot.initCamera();
+        String filename = "AutoEncoder.txt";
+        File file = AppUtil.getInstance().getSettingsFile(filename);
+        ReadWriteFile.writeFile(file, "0");
 
         waitForStart();
         boolean objectRecognized = false;
@@ -73,15 +76,11 @@ public class SignalScanMove extends LinearOpMode {
                 robot.wake(100);
                 robot.driveDistance(2.6);
                 robot.armHeight(3);
-                String filename = "AutoEncoder.txt";
-                File file = AppUtil.getInstance().getSettingsFile(filename);
-                ReadWriteFile.writeFile(file, Integer.toString(robot.getArmEncoderValue()));
+                ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
             } else if (recognizedObject == 1) {
                 robot.driveDistance(2.66);
                 robot.armHeight(3);
-                String filename = "AutoEncoder.txt";
-                File file = AppUtil.getInstance().getSettingsFile(filename);
-                ReadWriteFile.writeFile(file, Integer.toString(robot.getArmEncoderValue()));
+                ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
             } else if (recognizedObject == 2) {
                 robot.driveDistance(0.083);
                 robot.wake(100);
@@ -93,9 +92,7 @@ public class SignalScanMove extends LinearOpMode {
                 robot.wake(100);
                 robot.driveDistance(2.6);
                 robot.armHeight(3);
-                String filename = "AutoEncoder.txt";
-                File file = AppUtil.getInstance().getSettingsFile(filename);
-                ReadWriteFile.writeFile(file, Integer.toString(robot.getArmEncoderValue()));
+                ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
             }
 
         }
