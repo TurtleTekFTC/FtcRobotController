@@ -301,7 +301,7 @@ public class RobotHardware_TT {
 
     private double getPastEncoder() {
         String Encoder;
-        if (pastEncoder == Double.NEGATIVE_INFINITY){
+        if (pastEncoder == 0){
             String filename = "AutoEncoder.txt";
             File file = AppUtil.getInstance().getSettingsFile(filename);
             Encoder = ReadWriteFile.readFile(file);
