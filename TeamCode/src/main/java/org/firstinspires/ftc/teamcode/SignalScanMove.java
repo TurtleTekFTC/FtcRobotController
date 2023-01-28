@@ -1,12 +1,16 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.util.ReadWriteFile;
 
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
+import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 
+import java.io.File;
 import java.util.List;
 
-//@Autonomous(name="Autonomous_TT-2", group="Turtle Group")
+@Autonomous(name="Autonomous_TT", group="Turtle Group")
 public class SignalScanMove extends LinearOpMode {
     RobotHardware_TT   robot       = new RobotHardware_TT(this);
 
@@ -25,27 +29,39 @@ public class SignalScanMove extends LinearOpMode {
                     if (recognition.getLabel() == robot.LABELS[0]) {
                         //Bolts: 1.go forward 2.turn left 3.forward 4.turn right 5.forward
                         objectRecognized = true;
+                        robot.armHeight(2.5);
+                        sleep(100);
+                        robot.setHandPosition(2.04,-1.04);
+                        sleep(5000);
+                        robot.armHeight(5);
+                        sleep(100);
                         recognizedObject = 0;
                         telemetry.addLine("Lightning Bolt");
-                        robot.armHeight(3);
-                        robot.setHandPosition(0.1,0.5);
-                        robot.armHeight(5);
+
                     } else if (recognition.getLabel() == robot.LABELS[1]) {
                         //spin left
                         objectRecognized = true;
+                        robot.armHeight(2.5);
+                        sleep(100);
+                        robot.setHandPosition(2.04,-1.04);
+                        sleep(5000);
+                        robot.armHeight(5);
+                        sleep(100);
                         recognizedObject = 1;
                         telemetry.addLine("Light Bulb");
-                        robot.armHeight(3);
-                        robot.setHandPosition(0.1,0.5);
-                        robot.armHeight(5);
+
                     } else if (recognition.getLabel() == robot.LABELS[2]) {
                         //spin right
                         objectRecognized = true;
+                        robot.armHeight(2.5);
+                        sleep(100);
+                        robot.setHandPosition(2.04,-1.04);
+                        sleep(5000);
+                        robot.armHeight(5);
+                        sleep(100);
                         recognizedObject = 2;
                         telemetry.addLine("Solar Panel");
-                        robot.armHeight(3);
-                        robot.setHandPosition(0.1,0.5);
-                        robot.armHeight(5);
+
                     }
                 }
             }
@@ -64,10 +80,16 @@ public class SignalScanMove extends LinearOpMode {
                 robot.driveDistance(2.6);
                 robot.wake(100);
                 robot.armHeight(3);
+                String filename = "AutoEncoder.txt";
+                File file = AppUtil.getInstance().getSettingsFile(filename);
+                ReadWriteFile.writeFile(file, Integer.toString(robot.getArmEncoderValue()));
             } else if (recognizedObject == 1) {
                 robot.driveDistance(2.66);
                 robot.wake(2);
                 robot.armHeight(3);
+                String filename = "AutoEncoder.txt";
+                File file = AppUtil.getInstance().getSettingsFile(filename);
+                ReadWriteFile.writeFile(file, Integer.toString(robot.getArmEncoderValue()));
             } else if (recognizedObject == 2) {
                 robot.driveDistance(0.083);
                 robot.wake(100);
@@ -80,7 +102,11 @@ public class SignalScanMove extends LinearOpMode {
                 robot.driveDistance(2.6);
                 robot.wake(100);
                 robot.armHeight(3);
+                String filename = "AutoEncoder.txt";
+                File file = AppUtil.getInstance().getSettingsFile(filename);
+                ReadWriteFile.writeFile(file, Integer.toString(robot.getArmEncoderValue()));
             }
+
         }
     }
 

@@ -2,6 +2,11 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.util.ReadWriteFile;
+
+import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
+
+import java.io.File;
 
 @TeleOp(name="TeleOp_TT", group="Turtle Group")
 public class ToggleDrive extends LinearOpMode {
@@ -9,6 +14,8 @@ public class ToggleDrive extends LinearOpMode {
 
     @Override
     public void runOpMode() {
+        String filename = "AutoEncoder.txt";
+
         boolean isUsingArcade = false;
         double servoPositionLeft = 0;
         double servoPositionRight = 1;
@@ -35,19 +42,6 @@ public class ToggleDrive extends LinearOpMode {
 
             if (front==false) {
                 if (isUsingArcade == false){
-                    x = -getSquare(-gamepad1.right_stick_y);
-                    y = -getSquare(-gamepad1.left_stick_y);
-                    robot.tankDrive(y*0.8, x*0.8);
-                }
-
-                if (isUsingArcade == true){
-                    x = -getSquare(-gamepad1.right_stick_x);
-                    y = -getSquare(-gamepad1.left_stick_y);
-                    robot.arcadeDrive(y*0.8, x*0.8);
-
-                }
-            } else {
-                if (isUsingArcade == false){
                     x = getSquare(-gamepad1.right_stick_y);
                     y = getSquare(-gamepad1.left_stick_y);
                     robot.tankDrive(y*0.8, x*0.8);
@@ -57,13 +51,21 @@ public class ToggleDrive extends LinearOpMode {
                     x = getSquare(-gamepad1.right_stick_x);
                     y = getSquare(-gamepad1.left_stick_y);
                     robot.arcadeDrive(y*0.8, x*0.8);
+
+                }
+            } else {
+                if (isUsingArcade == false){
+                    x = -getSquare(-gamepad1.right_stick_y);
+                    y = -getSquare(-gamepad1.left_stick_y);
+                    robot.tankDrive(y*0.8, x*0.8);
+                }
+
+                if (isUsingArcade == true){
+                    x = -getSquare(-gamepad1.right_stick_x);
+                    y = -getSquare(-gamepad1.left_stick_y);
+                    robot.arcadeDrive(y*0.8, x*0.8);
                 }
             }
-
-
-
-
-
 
 
             if (gamepad2.left_bumper && gamepad2.right_bumper) {
@@ -110,6 +112,9 @@ public class ToggleDrive extends LinearOpMode {
 
             telemetry.update();
         }
+        File file = AppUtil.getInstance().getSettingsFile(filename);
+        ReadWriteFile.writeFile(file, "0");
+        ReadWriteFile.writeFile(file, "0");
     }
 
     private double getSquare(double stick) {
@@ -124,4 +129,5 @@ public class ToggleDrive extends LinearOpMode {
 
 
 }
+
 

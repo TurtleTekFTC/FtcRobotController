@@ -88,7 +88,7 @@ public class RobotHardware_TT {
     private Servo claw1;
     private Servo claw2;
     private DigitalChannel touchSensor;
-    private double pastEncoder = Double.NEGATIVE_INFINITY;
+    private double pastEncoder = 0;
     private static final String VUFORIA_KEY = LicenseKey.key;
     private VuforiaLocalizer vuforia;
 
@@ -293,6 +293,7 @@ public class RobotHardware_TT {
                 myOpMode.telemetry.addData("inches", getWheelInches());
                 myOpMode.telemetry.update();
                 armHeight(5);
+                setHandPosition(2.04,-1.04);
         }
         tankDrive(0,0);
         myOpMode.sleep(100);
@@ -311,7 +312,7 @@ public class RobotHardware_TT {
     }
 
 
-    public double getArmEncoderValue() {
+    public int getArmEncoderValue() {
          return armMotor.getCurrentPosition();
     }
     public double getArmInches() {
@@ -330,12 +331,13 @@ public class RobotHardware_TT {
                 armMotor.setPower(power);
             }
     }
+
     public void armHeight(double height) {
-            if (getArmInches() < height) {
-                setArmPower(0.8);
-            } else {
-                setArmPower(0);
-            }
+        if (getArmInches() < height - getPastEncoder()) {
+            setArmPower(0.8);
+        } else {
+            setArmPower(0);
+        }
     }
 
    /* public void setHandPositions(double offset) {
@@ -458,6 +460,7 @@ public class RobotHardware_TT {
         ElapsedTime elapsedTime = new ElapsedTime();
         while (milliseconds > elapsedTime.time()) {
             armHeight(5);
+            setHandPosition(2.04,-1.04);
         }
     }
 }

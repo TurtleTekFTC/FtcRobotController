@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import java.util.List;
 
-@Autonomous(name="Autonomous_TT", group="Turtle Group")
+@Autonomous(name="Autonomous_TT-2", group="Turtle Group")
 public class SignalScanMove2 extends LinearOpMode {
     RobotHardware_TT   robot       = new RobotHardware_TT(this);
 
@@ -13,10 +13,7 @@ public class SignalScanMove2 extends LinearOpMode {
     public void runOpMode() {
         robot.initAuto();
         robot.initCamera();
-        // Signal sleeve!!!
-        // SignalScanMove!!
-        //Gyro turning!!!!
-        // Due Feb 15!
+        
 
         waitForStart();
         boolean objectRecognized = false;
