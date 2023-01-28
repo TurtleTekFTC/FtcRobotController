@@ -13,7 +13,7 @@ public class SignalScanMove2 extends LinearOpMode {
     public void runOpMode() {
         robot.initAuto();
         robot.initCamera();
-        
+
 
         waitForStart();
         boolean objectRecognized = false;

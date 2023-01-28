@@ -31,10 +31,8 @@ public class SignalScanMove extends LinearOpMode {
                         objectRecognized = true;
                         robot.armHeight(2.5);
                         sleep(100);
-                        robot.setHandPosition(2.04,-1.04);
-                        sleep(5000);
-                        robot.armHeight(5);
-                        sleep(100);
+                        robot.setHandPosition(0.25,0.75);
+                        robot.wake(5000);
                         recognizedObject = 0;
                         telemetry.addLine("Lightning Bolt");
 
@@ -43,10 +41,8 @@ public class SignalScanMove extends LinearOpMode {
                         objectRecognized = true;
                         robot.armHeight(2.5);
                         sleep(100);
-                        robot.setHandPosition(2.04,-1.04);
-                        sleep(5000);
-                        robot.armHeight(5);
-                        sleep(100);
+                        robot.setHandPosition(0.25,0.75);
+                        robot.wake(5000);
                         recognizedObject = 1;
                         telemetry.addLine("Light Bulb");
 
@@ -55,10 +51,8 @@ public class SignalScanMove extends LinearOpMode {
                         objectRecognized = true;
                         robot.armHeight(2.5);
                         sleep(100);
-                        robot.setHandPosition(2.04,-1.04);
-                        sleep(5000);
-                        robot.armHeight(5);
-                        sleep(100);
+                        robot.setHandPosition(0.25,0.75);
+                        robot.wake(5000);
                         recognizedObject = 2;
                         telemetry.addLine("Solar Panel");
 
@@ -78,14 +72,12 @@ public class SignalScanMove extends LinearOpMode {
                 robot.TurnRight();
                 robot.wake(100);
                 robot.driveDistance(2.6);
-                robot.wake(100);
                 robot.armHeight(3);
                 String filename = "AutoEncoder.txt";
                 File file = AppUtil.getInstance().getSettingsFile(filename);
                 ReadWriteFile.writeFile(file, Integer.toString(robot.getArmEncoderValue()));
             } else if (recognizedObject == 1) {
                 robot.driveDistance(2.66);
-                robot.wake(2);
                 robot.armHeight(3);
                 String filename = "AutoEncoder.txt";
                 File file = AppUtil.getInstance().getSettingsFile(filename);
@@ -100,7 +92,6 @@ public class SignalScanMove extends LinearOpMode {
                 robot.TurnLeft1();
                 robot.wake(100);
                 robot.driveDistance(2.6);
-                robot.wake(100);
                 robot.armHeight(3);
                 String filename = "AutoEncoder.txt";
                 File file = AppUtil.getInstance().getSettingsFile(filename);
