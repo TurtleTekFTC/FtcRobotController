@@ -83,16 +83,16 @@ public class ToggleDrive extends LinearOpMode {
 
 
             if (gamepad2.a) {
-                heightArm = 3;
+                heightArm = 0;
             }
             else if (gamepad2.b) {
-                heightArm = 16;
+                heightArm = 13;
             }
             else if (gamepad2.y) {
-                heightArm = 27.5;
+                heightArm = 24.5;
             }
             else if (gamepad2.x) {
-                heightArm = 37.5;
+                heightArm = 34.5;
             }
 
 
