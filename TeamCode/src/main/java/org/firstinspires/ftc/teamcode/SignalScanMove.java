@@ -30,35 +30,17 @@ public class SignalScanMove extends LinearOpMode {
             if (updatedRecognitions != null) {
                 for (Recognition recognition : updatedRecognitions) {
                     if (recognition.getLabel() == robot.LABELS[0]) {
-                        //Bolts: 1.go forward 2.turn left 3.forward 4.turn right 5.forward
                         objectRecognized = true;
-                        robot.armHeight(2.5);
-                        sleep(100);
-                        robot.setHandPosition(0.25,0.75);
-                        robot.wake(5000);
                         recognizedObject = 0;
                         telemetry.addLine("Lightning Bolt");
-
                     } else if (recognition.getLabel() == robot.LABELS[1]) {
-                        //spin left
                         objectRecognized = true;
-                        robot.armHeight(2.5);
-                        sleep(100);
-                        robot.setHandPosition(0.25,0.75);
-                        robot.wake(5000);
                         recognizedObject = 1;
                         telemetry.addLine("Light Bulb");
-
                     } else if (recognition.getLabel() == robot.LABELS[2]) {
-                        //spin right
                         objectRecognized = true;
-                        robot.armHeight(2.5);
-                        sleep(100);
-                        robot.setHandPosition(0.25,0.75);
-                        robot.wake(5000);
                         recognizedObject = 2;
                         telemetry.addLine("Solar Panel");
-
                     }
                 }
             }
@@ -66,6 +48,7 @@ public class SignalScanMove extends LinearOpMode {
         }
         if (objectRecognized) {
             if (recognizedObject == 0) {
+                robot.setHandPosition(0.30,0.60);
                 robot.driveDistance(0.5);
                 robot.wake(100);
                 robot.TurnLeft();
@@ -75,13 +58,15 @@ public class SignalScanMove extends LinearOpMode {
                 robot.TurnRight();
                 robot.wake(100);
                 robot.driveDistance(2.6);
-                robot.armHeight(3);
+                robot.armHeight(0);
                 ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
             } else if (recognizedObject == 1) {
+                robot.setHandPosition(0.30,0.60);
                 robot.driveDistance(2.66);
-                robot.armHeight(3);
+                robot.armHeight(0);
                 ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
             } else if (recognizedObject == 2) {
+                robot.setHandPosition(0.30,0.60);
                 robot.driveDistance(0.083);
                 robot.wake(100);
                 robot.TurnRight1();
@@ -91,13 +76,10 @@ public class SignalScanMove extends LinearOpMode {
                 robot.TurnLeft1();
                 robot.wake(100);
                 robot.driveDistance(2.6);
-                robot.armHeight(3);
+                robot.armHeight(0);
                 ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
             }
 
         }
     }
-
-
-
 }

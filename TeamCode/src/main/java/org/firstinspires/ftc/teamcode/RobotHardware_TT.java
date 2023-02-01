@@ -39,7 +39,6 @@ import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.ReadWriteFile;
-
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.controls.ExposureControl;
@@ -47,7 +46,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -290,9 +288,7 @@ public class RobotHardware_TT {
         tankDrive(.25, .25);
         while (getWheelInches() > inches && myOpMode.opModeIsActive()) {
                 tankDrive(.25, .25);
-                myOpMode.telemetry.addData("inches", getWheelInches());
-                myOpMode.telemetry.update();
-                armHeight(5);
+                armHeight(2);
                 setHandPosition(2.04,-1.04);
         }
         tankDrive(0,0);
@@ -438,29 +434,28 @@ public class RobotHardware_TT {
     }
     public void TurnLeft() {
         tankDrive(-0.75, 0.75);
-        myOpMode.sleep(800);
+        wake(800);
         tankDrive(0,0);
     }
     public void TurnRight() {
         tankDrive(0.75, -0.75);
-        myOpMode.sleep(750);
+        wake(750);
         tankDrive(0,0);
     }
     public void TurnLeft1() {
         tankDrive(-0.75, 0.75);
-        myOpMode.sleep(750);
+        wake(750);
         tankDrive(0,0);
     }
     public void TurnRight1() {
         tankDrive(0.75, -0.75);
-        myOpMode.sleep(710);
+        wake(710);
         tankDrive(0,0);
     }
     public void wake(long milliseconds) {
-        ElapsedTime elapsedTime = new ElapsedTime();
+        ElapsedTime elapsedTime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
         while (milliseconds > elapsedTime.time()) {
-            armHeight(5);
-            setHandPosition(2.04,-1.04);
+            armHeight(2);
         }
     }
 }
