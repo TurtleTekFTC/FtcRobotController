@@ -301,7 +301,7 @@ public class RobotHardware_TT {
             String filename = "AutoEncoder.txt";
             File file = AppUtil.getInstance().getSettingsFile(filename);
             Encoder = ReadWriteFile.readFile(file);
-            pastEncoder = Integer.parseInt(Encoder);
+            pastEncoder = Double.parseDouble(Encoder);
             myOpMode.telemetry.addData("Encoder value: ", Encoder);
         }
         return pastEncoder;
@@ -343,14 +343,14 @@ public class RobotHardware_TT {
     }*/
     public void setHandPosition(double leftWheel, double rightWheel) {
         // Output the values to the motor drives.
-        if (leftWheel > 0.35 ) {
+        if (leftWheel > 0.25 ) {
             claw1.setPosition(0.35);
         }
         else {
             claw1.setPosition(leftWheel);
         }
 
-        if (rightWheel < 0.65) {
+        if (rightWheel < 0.75) {
             claw2.setPosition(0.65);
         }
         else {
@@ -385,7 +385,7 @@ public class RobotHardware_TT {
         exposureControl.setMode(ExposureControl.Mode.Manual);
         // max exposure:1000
         // min exposure:0
-        exposureControl.setExposure(25, TimeUnit.MILLISECONDS);
+        exposureControl.setExposure(35, TimeUnit.MILLISECONDS);
         myOpMode.telemetry.update();
 
 
