@@ -57,7 +57,7 @@ public class SignalScanMove extends LinearOpMode {
                 robot.wake(100);
                 robot.TurnRight();
                 robot.wake(100);
-                robot.driveDistance(2.6);
+                robot.driveDistance(2);
                 robot.armHeight(0);
                 ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
             } else if (recognizedObject == 1) {
