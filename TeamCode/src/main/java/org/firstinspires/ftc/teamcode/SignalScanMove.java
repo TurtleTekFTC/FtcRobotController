@@ -49,11 +49,11 @@ public class SignalScanMove extends LinearOpMode {
         if (objectRecognized) {
             if (recognizedObject == 0) {
                 robot.setHandPosition(0.30,0.60);
-                robot.driveDistance(0.5);
+                robot.driveDistance(0.35);
                 robot.wake(100);
                 robot.TurnLeft();
                 robot.wake(100);
-                robot.driveDistance(2.3);
+                robot.driveDistance(2);
                 robot.wake(100);
                 robot.TurnRight();
                 robot.wake(100);
