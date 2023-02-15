@@ -285,9 +285,9 @@ public class RobotHardware_TT {
         //myOpMode.telemetry.addData("inches : ", inches);
         //myOpMode.telemetry.update();
         myOpMode.sleep(100);
-        tankDrive(.25, .25);
+        tankDrive(.35, .35);
         while (getWheelInches() > inches && myOpMode.opModeIsActive()) {
-                tankDrive(.25, .25);
+                tankDrive(.35, .35);
                 armHeight(2);
                 setHandPosition(2.04,-1.04);
         }
@@ -434,12 +434,12 @@ public class RobotHardware_TT {
     }
     public void TurnLeft() {
         tankDrive(-0.75, 0.75);
-        wake(890);
+        wake(940);
         tankDrive(0,0);
     }
     public void TurnRight() {
         tankDrive(0.75, -0.75);
-        wake(850);
+        wake(990);
         tankDrive(0,0);
     }
     public void TurnLeft1() {
