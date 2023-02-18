@@ -434,12 +434,12 @@ public class RobotHardware_TT {
     }
     public void TurnLeft() {
         tankDrive(-0.75, 0.75);
-        wake(940);
+        wake(650);
         tankDrive(0,0);
     }
     public void TurnRight() {
         tankDrive(0.75, -0.75);
-        wake(990);
+        wake(710);
         tankDrive(0,0);
     }
     public void TurnLeft1() {
@@ -449,7 +449,7 @@ public class RobotHardware_TT {
     }
     public void TurnRight1() {
         tankDrive(0.75, -0.75);
-        wake(710);
+        wake(740);
         tankDrive(0,0);
     }
     public void wake(long milliseconds) {

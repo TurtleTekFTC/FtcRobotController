@@ -53,7 +53,7 @@ public class SignalScanMove extends LinearOpMode {
                 robot.wake(100);
                 robot.TurnLeft();
                 robot.wake(100);
-                robot.driveDistance(2);
+                robot.driveDistance(1.8);
                 robot.wake(100);
                 robot.TurnRight();
                 robot.wake(100);
@@ -62,7 +62,7 @@ public class SignalScanMove extends LinearOpMode {
                 ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
             } else if (recognizedObject == 1) {
                 robot.setHandPosition(0.30,0.60);
-                robot.driveDistance(2.66);
+                robot.driveDistance(2.3);
                 robot.armHeight(0);
                 ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
             } else if (recognizedObject == 2) {
@@ -75,7 +75,7 @@ public class SignalScanMove extends LinearOpMode {
                 robot.wake(100);
                 robot.TurnLeft1();
                 robot.wake(100);
-                robot.driveDistance(2.6);
+                robot.driveDistance(1.8);
                 robot.armHeight(0);
                 ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
             }
