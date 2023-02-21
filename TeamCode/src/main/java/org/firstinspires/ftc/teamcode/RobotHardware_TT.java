@@ -42,7 +42,9 @@ import com.qualcomm.robotcore.util.ReadWriteFile;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.controls.ExposureControl;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
@@ -432,26 +434,30 @@ public class RobotHardware_TT {
         }
         return updatedRecognitions;
     }
+    public double getAngle() {
+        YawPitchRollAngles orientation = imu.getRobotYawPitchRollAngles();
+        double angle = orientation.getYaw(AngleUnit.DEGREES);
+        return angle;
+    }
     public void TurnLeft() {
-        tankDrive(-0.75, 0.75);
-        wake(650);
+        tankDrive(-0.35, 0.35);
+        imu.resetYaw();
+        while (getAngle() > -90) {
+            tankDrive(-0.35, 0.35);
+            armHeight(2);
+        }
         tankDrive(0,0);
     }
     public void TurnRight() {
-        tankDrive(0.75, -0.75);
-        wake(710);
+        tankDrive(0.35, -0.35);
+        imu.resetYaw();
+        while (getAngle() < 90) {
+            tankDrive(0.35, -0.35);
+            armHeight(2);
+        }
         tankDrive(0,0);
     }
-    public void TurnLeft1() {
-        tankDrive(-0.75, 0.75);
-        wake(750);
-        tankDrive(0,0);
-    }
-    public void TurnRight1() {
-        tankDrive(0.75, -0.75);
-        wake(740);
-        tankDrive(0,0);
-    }
+
     public void wake(long milliseconds) {
         ElapsedTime elapsedTime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
         while (milliseconds > elapsedTime.time()) {

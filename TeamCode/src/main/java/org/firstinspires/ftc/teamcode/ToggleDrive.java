@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ReadWriteFile;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 
 import java.io.File;
@@ -106,6 +107,7 @@ public class ToggleDrive extends LinearOpMode {
             //telemetry.addData("Arm Inches: ", robot.getArmInches());
             telemetry.addData("Left Servo: ",servoPositionLeft);
             telemetry.addData("Right Servo: ",servoPositionRight);
+            telemetry.addData("Orientation: ", robot.imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES));
 
 
 

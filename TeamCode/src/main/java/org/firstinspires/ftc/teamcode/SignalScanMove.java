@@ -69,11 +69,11 @@ public class SignalScanMove extends LinearOpMode {
                 robot.setHandPosition(0.30,0.60);
                 robot.driveDistance(0.083);
                 robot.wake(100);
-                robot.TurnRight1();
+                robot.TurnRight();
                 robot.wake(100);
                 robot.driveDistance(2);
                 robot.wake(100);
-                robot.TurnLeft1();
+                robot.TurnLeft();
                 robot.wake(100);
                 robot.driveDistance(1.8);
                 robot.armHeight(0);
