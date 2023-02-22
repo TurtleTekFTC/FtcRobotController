@@ -61,11 +61,11 @@ public class SignalScanMove2 extends LinearOpMode {
             } else if (recognizedObject == 2) {
                 robot.driveDistance(0.2);
                 sleep(100);
-                robot.TurnRight1();
+                robot.TurnRight();
                 sleep(100);
                 robot.driveDistance(2);
                 sleep(100);
-                robot.TurnLeft1();
+                robot.TurnLeft();
                 sleep(100);
                 robot.driveDistance(2.3);
                 sleep(100);
