@@ -387,7 +387,7 @@ public class RobotHardware_TT {
         exposureControl.setMode(ExposureControl.Mode.Manual);
         // max exposure:1000
         // min exposure:0
-        exposureControl.setExposure(35, TimeUnit.MILLISECONDS);
+        exposureControl.setExposure(15, TimeUnit.MILLISECONDS);
         myOpMode.telemetry.update();
 
 
@@ -441,21 +441,23 @@ public class RobotHardware_TT {
     }
     public void TurnLeft() {
         imu.resetYaw();
-        tankDrive(-0.35, 0.35);
-        while (getAngle() > -90 && myOpMode.opModeIsActive()) {
-            tankDrive(-0.35, 0.35);
+        tankDrive(-0.65, 0.65);
+        while (getAngle() < 90 && myOpMode.opModeIsActive()) {
+            tankDrive(-0.65, 0.65);
             armHeight(2);
-            myOpMode.telemetry.addData("", imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES));
+            myOpMode.telemetry.addData("", getAngle());
+            myOpMode.telemetry.update();
         }
         tankDrive(0,0);
     }
     public void TurnRight() {
         imu.resetYaw();
-        tankDrive(0.35, -0.35);
-        while (getAngle() < 90 && myOpMode.opModeIsActive()) {
-            tankDrive(0.35, -0.35);
+        tankDrive(0.65, -0.65);
+        while (getAngle() > -90 && myOpMode.opModeIsActive()) {
+            tankDrive(0.65, -0.65);
             armHeight(2);
-            myOpMode.telemetry.addData("", imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES));
+            myOpMode.telemetry.addData("", getAngle());
+            myOpMode.telemetry.update();
         }
         tankDrive(0,0);
     }
