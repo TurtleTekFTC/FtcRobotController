@@ -442,7 +442,7 @@ public class RobotHardware_TT {
     public void TurnLeft() {
         imu.resetYaw();
         tankDrive(-0.65, 0.65);
-        while (getAngle() < 90 && myOpMode.opModeIsActive()) {
+        while (getAngle() < 85 && myOpMode.opModeIsActive()) {
             tankDrive(-0.65, 0.65);
             armHeight(2);
             myOpMode.telemetry.addData("", getAngle());
@@ -453,7 +453,7 @@ public class RobotHardware_TT {
     public void TurnRight() {
         imu.resetYaw();
         tankDrive(0.65, -0.65);
-        while (getAngle() > -90 && myOpMode.opModeIsActive()) {
+        while (getAngle() > -85 && myOpMode.opModeIsActive()) {
             tankDrive(0.65, -0.65);
             armHeight(2);
             myOpMode.telemetry.addData("", getAngle());
