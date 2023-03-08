@@ -25,21 +25,21 @@ public class CustomSignalPipeline extends OpenCvPipeline
     {
         // Step RGB_Threshold0:
         Mat rgbThreshold0Input = source0;
-        double[] rgbThreshold0Red = {0.0, 255.0};
-        double[] rgbThreshold0Green = {0.0, 211.70628183361632};
-        double[] rgbThreshold0Blue = {229.31654676258992, 255.0};
+        double[] rgbThreshold0Red = {156.0734463276836, 243.69680851063828};
+        double[] rgbThreshold0Green = {110.45197740112995, 181.53775407177625};
+        double[] rgbThreshold0Blue = {38.41807909604519, 105.79787234042556};
         rgbThreshold(rgbThreshold0Input, rgbThreshold0Red, rgbThreshold0Green, rgbThreshold0Blue, rgbThreshold0Output);
 
         // Step Find_Contours0:
         Mat findContours0Input = rgbThreshold0Output;
-        boolean findContours0ExternalOnly = false;
+        boolean findContours0ExternalOnly = true;
         findContours(findContours0Input, findContours0ExternalOnly, findContours0Output);
 
         // Step RGB_Threshold1:
         Mat rgbThreshold1Input = source0;
-        double[] rgbThreshold1Red = {0.0, 255.0};
-        double[] rgbThreshold1Green = {165.10791366906474, 255.0};
-        double[] rgbThreshold1Blue = {0.0, 142.43633276740238};
+        double[] rgbThreshold1Red = {133.00359712230218, 185.7300509337861};
+        double[] rgbThreshold1Green = {162.8147482014388, 213.8709677419355};
+        double[] rgbThreshold1Blue = {55.03597122302158, 107.80135823429544};
         rgbThreshold(rgbThreshold1Input, rgbThreshold1Red, rgbThreshold1Green, rgbThreshold1Blue, rgbThreshold1Output);
 
         // Step Find_Contours1:
@@ -49,9 +49,9 @@ public class CustomSignalPipeline extends OpenCvPipeline
 
         // Step RGB_Threshold2:
         Mat rgbThreshold2Input = source0;
-        double[] rgbThreshold2Red = {0.0, 255.0};
-        double[] rgbThreshold2Green = {41.25251627556975, 205.31624152626893};
-        double[] rgbThreshold2Blue = {0.0, 42.86078098471986};
+        double[] rgbThreshold2Red = {134.46327683615817, 178.13829787234042};
+        double[] rgbThreshold2Green = {38.41807909604519, 119.36170212765956};
+        double[] rgbThreshold2Blue = {79.23728813559323, 214.66929162301773};
         rgbThreshold(rgbThreshold2Input, rgbThreshold2Red, rgbThreshold2Green, rgbThreshold2Blue, rgbThreshold2Output);
 
         // Step Find_Contours2:

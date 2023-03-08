@@ -17,7 +17,7 @@ public class SignalScanMove extends LinearOpMode {
     @Override
     public void runOpMode() {
         robot.initAuto();
-        robot.initCamera();
+       //robot.initCamera();
         String filename = "AutoEncoder.txt";
         File file = AppUtil.getInstance().getSettingsFile(filename);
         ReadWriteFile.writeFile(file, "0");
