@@ -46,6 +46,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
+import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvCameraFactory;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -108,6 +111,7 @@ public class RobotHardware_TT {
     public static final double HAND_SPEED      =  0.02 ;  // sets rate to move servo
     public static final double ARM_UP_POWER    =  0.45 ;
     public static final double ARM_DOWN_POWER  = -0.45 ;
+    public CustomSignalPipeline pipeline = null;
 
     // Define a constructor that allows the OpMode to pass a reference to itself.
     public RobotHardware_TT(LinearOpMode opmode) {
@@ -181,6 +185,11 @@ public class RobotHardware_TT {
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
+        WebcamName webcamName = myOpMode.hardwareMap.get(WebcamName.class, "WebCam");
+        OpenCvCamera camera = OpenCvCameraFactory.getInstance().createWebcam(webcamName);
+        camera.openCameraDevice();
+        pipeline = new CustomSignalPipeline();
+        camera.setPipeline(pipeline);
 
         leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -457,6 +466,10 @@ public class RobotHardware_TT {
         while (milliseconds > elapsedTime.time()) {
             armHeight(2);
         }
+    }
+
+    public CustomSignalPipeline.PossibilitiesForTheSignalSleeveToBe lastResult() {
+        return pipeline.getLatestResults();
     }
 }
 

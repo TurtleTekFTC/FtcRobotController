@@ -26,22 +26,19 @@ public class SignalScanMove extends LinearOpMode {
         boolean objectRecognized = false;
         int recognizedObject = -1;
         while (!objectRecognized && opModeIsActive()){
-            List<Recognition> updatedRecognitions = robot.recognition();
-            if (updatedRecognitions != null) {
-                for (Recognition recognition : updatedRecognitions) {
-                    if (recognition.getLabel() == robot.LABELS[0]) {
-                        objectRecognized = true;
-                        recognizedObject = 0;
-                        telemetry.addLine("Lightning Bolt");
-                    } else if (recognition.getLabel() == robot.LABELS[1]) {
-                        objectRecognized = true;
-                        recognizedObject = 1;
-                        telemetry.addLine("Light Bulb");
-                    } else if (recognition.getLabel() == robot.LABELS[2]) {
-                        objectRecognized = true;
-                        recognizedObject = 2;
-                        telemetry.addLine("Solar Panel");
-                    }
+            if (CustomSignalPipeline.PossibilitiesForTheSignalSleeveToBe.ZILCH != robot.lastResult()) {
+                if (CustomSignalPipeline.PossibilitiesForTheSignalSleeveToBe.ONE == robot.lastResult()) {
+                    objectRecognized = true;
+                    recognizedObject = 0;
+                    telemetry.addLine("Loiogohotonoionog Booolot");
+                } else if (CustomSignalPipeline.PossibilitiesForTheSignalSleeveToBe.TWO == robot.lastResult()) {
+                    objectRecognized = true;
+                    recognizedObject = 1;
+                    telemetry.addLine("Liiigihit Biuilib");
+                } else if (CustomSignalPipeline.PossibilitiesForTheSignalSleeveToBe.THREE == robot.lastResult()) {
+                    objectRecognized = true;
+                    recognizedObject = 2;
+                    telemetry.addLine("Seoeleaer Peaeneeel");
                 }
             }
             telemetry.update();
