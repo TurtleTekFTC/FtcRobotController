@@ -12,53 +12,52 @@ import java.util.List;
 
 public class CustomSignalPipeline extends OpenCvPipeline
 {
-    private Mat rgbThreshold0Output = new Mat();
+    //Outputs
+    private Mat hsvThreshold0Output = new Mat();
     private ArrayList<MatOfPoint> findContours0Output = new ArrayList<MatOfPoint>();
-    private Mat rgbThreshold1Output = new Mat();
+    private Mat hsvThreshold1Output = new Mat();
     private ArrayList<MatOfPoint> findContours1Output = new ArrayList<MatOfPoint>();
-    private Mat rgbThreshold2Output = new Mat();
+    private Mat hsvThreshold2Output = new Mat();
     private ArrayList<MatOfPoint> findContours2Output = new ArrayList<MatOfPoint>();
     PossibilitiesForTheSignalSleeveToBe lastResult = PossibilitiesForTheSignalSleeveToBe.ZILCH;
     public enum PossibilitiesForTheSignalSleeveToBe {ONE, TWO, THREE, ZILCH}
     @Override
     public Mat processFrame(Mat source0)
     {
-        // Step RGB_Threshold0:
-        Mat rgbThreshold0Input = source0;
-        double[] rgbThreshold0Red = {139.2655367231638, 189.44148936170217};
-        double[] rgbThreshold0Green = {158.47457627118646, 212.04787234042556};
-        double[] rgbThreshold0Blue = {50.42372881355931, 108.05851063829789};
-        rgbThreshold(rgbThreshold0Input, rgbThreshold0Red, rgbThreshold0Green, rgbThreshold0Blue, rgbThreshold0Output);
+        Mat hsvThreshold0Input = source0;
+        double[] hsvThreshold0Hue = {28.8135593220339, 52.340425531914896};
+        double[] hsvThreshold0Saturation = {93.64406779661017, 193.96276595744678};
+        double[] hsvThreshold0Value = {112.85310734463278, 182.6595744680851};
+        hsvThreshold(hsvThreshold0Input, hsvThreshold0Hue, hsvThreshold0Saturation, hsvThreshold0Value, hsvThreshold0Output);
 
         // Step Find_Contours0:
-        Mat findContours0Input = rgbThreshold0Output;
+        Mat findContours0Input = hsvThreshold0Output;
         boolean findContours0ExternalOnly = true;
         findContours(findContours0Input, findContours0ExternalOnly, findContours0Output);
 
-        // Step RGB_Threshold1:
-        Mat rgbThreshold1Input = source0;
-        double[] rgbThreshold1Red = {213.70056497175142, 255.0};
-        double[] rgbThreshold1Green = {146.4689265536723, 209.7872340425532};
-        double[] rgbThreshold1Blue = {83.84953054505547, 141.71093270238055};
-        rgbThreshold(rgbThreshold1Input, rgbThreshold1Red, rgbThreshold1Green, rgbThreshold1Blue, rgbThreshold1Output);
+        // Step HSV_Threshold1:
+        Mat hsvThreshold1Input = source0;
+        double[] hsvThreshold1Hue = {13.559322033898312, 20.425531914893632};
+        double[] hsvThreshold1Saturation = {127.25988700564972, 200.7446808510638};
+        double[] hsvThreshold1Value = {120.08427777372255, 202.75211645625654};
+        hsvThreshold(hsvThreshold1Input, hsvThreshold1Hue, hsvThreshold1Saturation, hsvThreshold1Value, hsvThreshold1Output);
 
         // Step Find_Contours1:
-        Mat findContours1Input = rgbThreshold1Output;
-        boolean findContours1ExternalOnly = false;
+        Mat findContours1Input = hsvThreshold1Output;
+        boolean findContours1ExternalOnly = true;
         findContours(findContours1Input, findContours1ExternalOnly, findContours1Output);
 
-        // Step RGB_Threshold2:
-        Mat rgbThreshold2Input = source0;
-        double[] rgbThreshold2Red = {165.09948787626593, 255.0};
-        double[] rgbThreshold2Green = {84.03954802259886, 153.2712765957447};
-        double[] rgbThreshold2Blue = {132.0621468926554, 196.22340425531917};
-        rgbThreshold(rgbThreshold2Input, rgbThreshold2Red, rgbThreshold2Green, rgbThreshold2Blue, rgbThreshold2Output);
+        // Step HSV_Threshold2:
+        Mat hsvThreshold2Input = source0;
+        double[] hsvThreshold2Hue = {142.3705261290752, 169.82815324771926};
+        double[] hsvThreshold2Saturation = {64.83050847457626, 162.31382978723406};
+        double[] hsvThreshold2Value = {62.429378531073446, 200.74468085106383};
+        hsvThreshold(hsvThreshold2Input, hsvThreshold2Hue, hsvThreshold2Saturation, hsvThreshold2Value, hsvThreshold2Output);
 
         // Step Find_Contours2:
-        Mat findContours2Input = rgbThreshold2Output;
-        boolean findContours2ExternalOnly = false;
+        Mat findContours2Input = hsvThreshold2Output;
+        boolean findContours2ExternalOnly = true;
         findContours(findContours2Input, findContours2ExternalOnly, findContours2Output);
-
 
 
         if(findContours0Output.size() > 0)
@@ -71,12 +70,12 @@ public class CustomSignalPipeline extends OpenCvPipeline
         }
         else if(findContours2Output.size() > 0)
         {
-            lastResult = PossibilitiesForTheSignalSleeveToBe.THREE;
+            lastResult = PossibilitiesForTheSignalSleeveToBe.TWO;
         }
         else {
             lastResult = PossibilitiesForTheSignalSleeveToBe.ZILCH;
         }
-        return rgbThreshold0Input;
+        return source0;
     }
 
     public PossibilitiesForTheSignalSleeveToBe getLatestResults()
@@ -88,14 +87,14 @@ public class CustomSignalPipeline extends OpenCvPipeline
      * This method is a generated getter for the output of a RGB_Threshold.
      * @return Mat output from RGB_Threshold.
      */
-    public Mat rgbThreshold0Output() {
-        return rgbThreshold0Output;
-    }
-
-    /**
-     * This method is a generated getter for the output of a Find_Contours.
-     * @return ArrayList<MatOfPoint> output from Find_Contours.
-     */
+//    public Mat rgbThreshold0Output() {
+//        return rgbThreshold0Output;
+//    }
+//
+//    /**
+//     * This method is a generated getter for the output of a Find_Contours.
+//     * @return ArrayList<MatOfPoint> output from Find_Contours.
+//     */
     public ArrayList<MatOfPoint> findContours0Output() {
         return findContours0Output;
     }
@@ -104,9 +103,9 @@ public class CustomSignalPipeline extends OpenCvPipeline
      * This method is a generated getter for the output of a RGB_Threshold.
      * @return Mat output from RGB_Threshold.
      */
-    public Mat rgbThreshold1Output() {
-        return rgbThreshold1Output;
-    }
+//    public Mat rgbThreshold1Output() {
+//        return rgbThreshold1Output;
+//    }
 
     /**
      * This method is a generated getter for the output of a Find_Contours.
@@ -120,9 +119,9 @@ public class CustomSignalPipeline extends OpenCvPipeline
      * This method is a generated getter for the output of a RGB_Threshold.
      * @return Mat output from RGB_Threshold.
      */
-    public Mat rgbThreshold2Output() {
-        return rgbThreshold2Output;
-    }
+//    public Mat rgbThreshold2Output() {
+//        return rgbThreshold2Output;
+//    }
 
     /**
      * This method is a generated getter for the output of a Find_Contours.
@@ -132,7 +131,21 @@ public class CustomSignalPipeline extends OpenCvPipeline
         return findContours2Output;
     }
 
-
+    /**
+     * Segment an image based on hue, saturation, and value ranges.
+     *
+     * @param input The image on which to perform the HSL threshold.
+     * @param hue The min and max hue
+     * @param sat The min and max saturation
+//     * @param val The min and max value
+//     * @param output The image in which to store the output.
+     */
+    private void hsvThreshold(Mat input, double[] hue, double[] sat, double[] val,
+                              Mat out) {
+        Imgproc.cvtColor(input, out, Imgproc.COLOR_BGR2HSV);
+        Core.inRange(out, new Scalar(hue[0], sat[0], val[0]),
+                new Scalar(hue[1], sat[1], val[1]), out);
+    }
     /**
      * Segment an image based on color ranges.
      * @param input The image on which to perform the RGB threshold.

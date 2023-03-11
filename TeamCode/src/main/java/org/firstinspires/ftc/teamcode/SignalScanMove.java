@@ -30,15 +30,15 @@ public class SignalScanMove extends LinearOpMode {
                 if (CustomSignalPipeline.PossibilitiesForTheSignalSleeveToBe.ONE == robot.lastResult()) {
                     objectRecognized = true;
                     recognizedObject = 0;
-                    telemetry.addLine("Loiogohotonoionog Booolot");
+                    telemetry.addLine("Green");
                 } else if (CustomSignalPipeline.PossibilitiesForTheSignalSleeveToBe.TWO == robot.lastResult()) {
                     objectRecognized = true;
                     recognizedObject = 1;
-                    telemetry.addLine("Liiigihit Biuilib");
+                    telemetry.addLine("Magenta");
                 } else if (CustomSignalPipeline.PossibilitiesForTheSignalSleeveToBe.THREE == robot.lastResult()) {
                     objectRecognized = true;
                     recognizedObject = 2;
-                    telemetry.addLine("Seoeleaer Peaeneeel");
+                    telemetry.addLine("Orange");
                 }
             }
             telemetry.update();
