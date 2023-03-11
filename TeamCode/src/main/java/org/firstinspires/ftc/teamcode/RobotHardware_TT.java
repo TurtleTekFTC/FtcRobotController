@@ -48,6 +48,7 @@ import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
+import org.openftc.easyopencv.OpenCvCameraRotation;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -112,6 +113,8 @@ public class RobotHardware_TT {
     public static final double ARM_UP_POWER    =  0.45 ;
     public static final double ARM_DOWN_POWER  = -0.45 ;
     public CustomSignalPipeline pipeline = null;
+
+    public static boolean isCameraOpen = false;
 
     // Define a constructor that allows the OpMode to pass a reference to itself.
     public RobotHardware_TT(LinearOpMode opmode) {
@@ -190,6 +193,31 @@ public class RobotHardware_TT {
         WebcamName webcamName = myOpMode.hardwareMap.get(WebcamName.class, "Webcam 1");
         OpenCvCamera camera = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorViewId);
         camera.openCameraDevice();
+
+//        camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
+//        {
+//            @Override
+//            public void onOpened()
+//            {
+//                RobotHardware_TT.isCameraOpen = true;
+//            }
+//            @Override
+//            public void onError(int errorCode)
+//            {
+//                /*
+//                 * This will be called if the camera could not be opened
+//                 */
+//            }
+//        });
+//
+//        while (!RobotHardware_TT.isCameraOpen) {
+//
+//        }
+
+        camera.startStreaming(1280, 720, OpenCvCameraRotation.UPSIDE_DOWN);
+
+
+
         pipeline = new CustomSignalPipeline();
         camera.setPipeline(pipeline);
 

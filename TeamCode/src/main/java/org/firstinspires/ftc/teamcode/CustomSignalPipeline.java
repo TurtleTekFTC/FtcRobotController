@@ -25,9 +25,9 @@ public class CustomSignalPipeline extends OpenCvPipeline
     {
         // Step RGB_Threshold0:
         Mat rgbThreshold0Input = source0;
-        double[] rgbThreshold0Red = {134.46327683615814, 196.22340425531914};
-        double[] rgbThreshold0Green = {163.27683615819208, 218.82978723404256};
-        double[] rgbThreshold0Blue = {45.62146892655366, 126.14361702127661};
+        double[] rgbThreshold0Red = {139.2655367231638, 189.44148936170217};
+        double[] rgbThreshold0Green = {158.47457627118646, 212.04787234042556};
+        double[] rgbThreshold0Blue = {50.42372881355931, 108.05851063829789};
         rgbThreshold(rgbThreshold0Input, rgbThreshold0Red, rgbThreshold0Green, rgbThreshold0Blue, rgbThreshold0Output);
 
         // Step Find_Contours0:
@@ -39,7 +39,7 @@ public class CustomSignalPipeline extends OpenCvPipeline
         Mat rgbThreshold1Input = source0;
         double[] rgbThreshold1Red = {213.70056497175142, 255.0};
         double[] rgbThreshold1Green = {146.4689265536723, 209.7872340425532};
-        double[] rgbThreshold1Blue = {83.84953054505547, 123.62582631940181};
+        double[] rgbThreshold1Blue = {83.84953054505547, 141.71093270238055};
         rgbThreshold(rgbThreshold1Input, rgbThreshold1Red, rgbThreshold1Green, rgbThreshold1Blue, rgbThreshold1Output);
 
         // Step Find_Contours1:
@@ -49,9 +49,9 @@ public class CustomSignalPipeline extends OpenCvPipeline
 
         // Step RGB_Threshold2:
         Mat rgbThreshold2Input = source0;
-        double[] rgbThreshold2Red = {156.0734463276836, 255.0};
-        double[] rgbThreshold2Green = {0.0, 148.74999999999997};
-        double[] rgbThreshold2Blue = {120.05649717514125, 209.7872340425532};
+        double[] rgbThreshold2Red = {165.09948787626593, 255.0};
+        double[] rgbThreshold2Green = {84.03954802259886, 153.2712765957447};
+        double[] rgbThreshold2Blue = {132.0621468926554, 196.22340425531917};
         rgbThreshold(rgbThreshold2Input, rgbThreshold2Red, rgbThreshold2Green, rgbThreshold2Blue, rgbThreshold2Output);
 
         // Step Find_Contours2:
@@ -67,7 +67,7 @@ public class CustomSignalPipeline extends OpenCvPipeline
         }
         else if(findContours1Output.size() > 0)
         {
-            lastResult = PossibilitiesForTheSignalSleeveToBe.TWO;
+            lastResult = PossibilitiesForTheSignalSleeveToBe.THREE;
         }
         else if(findContours2Output.size() > 0)
         {
@@ -76,7 +76,7 @@ public class CustomSignalPipeline extends OpenCvPipeline
         else {
             lastResult = PossibilitiesForTheSignalSleeveToBe.ZILCH;
         }
-        return source0;
+        return rgbThreshold0Input;
     }
 
     public PossibilitiesForTheSignalSleeveToBe getLatestResults()
@@ -139,7 +139,7 @@ public class CustomSignalPipeline extends OpenCvPipeline
      * @param red The min and max red.
      * @param green The min and max green.
      * @param blue The min and max blue.
-     * @param output The image in which to store the output.
+     * @param blue The image in which to store the output.
      */
     private void rgbThreshold(Mat input, double[] red, double[] green, double[] blue,
                               Mat out) {
