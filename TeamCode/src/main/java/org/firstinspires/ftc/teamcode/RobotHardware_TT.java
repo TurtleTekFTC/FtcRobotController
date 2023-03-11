@@ -187,7 +187,7 @@ public class RobotHardware_TT {
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
 
         int cameraMonitorViewId = myOpMode.hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", myOpMode.hardwareMap.appContext.getPackageName());
-        WebcamName webcamName = myOpMode.hardwareMap.get(WebcamName.class, "WebCam");
+        WebcamName webcamName = myOpMode.hardwareMap.get(WebcamName.class, "Webcam 1");
         OpenCvCamera camera = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorViewId);
         camera.openCameraDevice();
         pipeline = new CustomSignalPipeline();
