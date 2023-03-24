@@ -10,13 +10,13 @@ import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 import java.io.File;
 
 @TeleOp(name="TeleOp_TT", group="Turtle Group")
-public class ToggleDrive extends LinearOpMode {
+public class TeleOp_22 extends LinearOpMode {
     RobotHardware_TT robot = new RobotHardware_TT(this);
 
     @Override
     public void runOpMode() {
         String filename = "AutoEncoder.txt";
-        boolean isUsingArcade = false;
+        boolean isUsingArcade = true;
         double servoPositionLeft = 0;
         double servoPositionRight = 1;
         double heightArm = 0;
