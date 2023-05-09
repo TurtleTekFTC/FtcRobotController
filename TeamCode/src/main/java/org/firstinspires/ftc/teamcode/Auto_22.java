@@ -17,17 +17,17 @@ public class Auto_22 extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        robot.initAuto(); //takes from robot class to init auto sequence for Squirt.
-        robot.initCamera(); //from robot. inits camera.
+        robot.initAuto(); //Takes from robot class to init auto sequence for Squirt.
+        robot.initCamera(); //From robot. Inits camera.
         String filename = "AutoEncoder.txt";
         File file = AppUtil.getInstance().getSettingsFile(filename);
         ReadWriteFile.writeFile(file, "0");
-        //sets a file to store encoder.
+        //Sets a file to store encoder.
 
         waitForStart();
         boolean objectRecognized = false;
         int recognizedObject = -1;
-        while (!objectRecognized && opModeIsActive()){ //object recognition.
+        while (!objectRecognized && opModeIsActive()){ //2022-23 Signal Cone recognition.
             List<Recognition> updatedRecognitions = robot.recognition();
             if (updatedRecognitions != null) {
                 for (Recognition recognition : updatedRecognitions) {
@@ -61,8 +61,7 @@ public class Auto_22 extends LinearOpMode {
                 robot.wake(100);
                 robot.driveDistance(2.1);
                 robot.armHeight(0);
-                ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue()));
-                //writes to file the encoder.
+                ReadWriteFile.writeFile(file, Double.toString(robot.getArmEncoderValue())); //writes to file the encoder.
             } else if (recognizedObject == 1) {
                 robot.setHandPosition(0.30,0.60);
                 robot.driveDistance(2.3);
