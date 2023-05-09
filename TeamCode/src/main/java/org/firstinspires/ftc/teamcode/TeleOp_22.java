@@ -12,6 +12,7 @@ import java.io.File;
 @TeleOp(name="TeleOp_TT", group="Turtle Group")
 public class TeleOp_22 extends LinearOpMode {
     RobotHardware_TT robot = new RobotHardware_TT(this);
+    //Squirt Code
 
     @Override
     public void runOpMode() {
@@ -32,13 +33,14 @@ public class TeleOp_22 extends LinearOpMode {
             if (gamepad1.dpad_down == true) {
                 isUsingArcade = false;
             }
-
+            //Changes drive mode for omni wheels
            
             if (gamepad1.right_bumper) {
                 front = false;
             } else {
                 front = true;
             }
+            //Switches front
 
             if (front==false) {
                 if (isUsingArcade == false){
@@ -81,6 +83,7 @@ public class TeleOp_22 extends LinearOpMode {
                 servoPositionRight = 1;
                 robot.setHandPosition(servoPositionLeft,servoPositionRight);
             }
+            //Servos for claw.
 
 
             if (gamepad2.a) {
@@ -95,13 +98,14 @@ public class TeleOp_22 extends LinearOpMode {
             else if (gamepad2.x) {
                 heightArm = 34.5;
             }
-
+            //auto height buttons.
 
             if (gamepad2.left_stick_y > 0.05 || gamepad2.left_stick_y < -0.05) {
                 robot.setArmPower(-gamepad2.left_stick_y);
             } else {
                 robot.armHeight(heightArm);
             }
+            //Arm power
 
             //telemetry.addData("Arm motor Encoder: ", robot.getArmEncoderValue());
             //telemetry.addData("Arm Inches: ", robot.getArmInches());
@@ -126,6 +130,7 @@ public class TeleOp_22 extends LinearOpMode {
         }
         return a;
     }
+    //Squaring for joysticks.
 
 
 }

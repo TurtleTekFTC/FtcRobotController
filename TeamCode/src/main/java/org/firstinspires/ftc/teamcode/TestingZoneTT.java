@@ -4,8 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous(name="TurtleTestMode", group="Tests")
-public class TurtleTest extends LinearOpMode {
+public class TestingZoneTT extends LinearOpMode {
     RobotHardware_TT robot = new RobotHardware_TT(this);
+    //Testing Zone
 
     @Override
     public void runOpMode() {
