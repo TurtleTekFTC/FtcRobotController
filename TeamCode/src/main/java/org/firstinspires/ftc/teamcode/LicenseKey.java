@@ -1,0 +1,5 @@
+package org.firstinspires.ftc.teamcode;
+
+public class LicenseKey {
+    public final static String key = "AWrOwBX/////AAABmQ0y3PTMp0SLiAQRzrd+VfwUxDAdCDS1sYQbcw4GUdPngrqQlwC+9bvyQdz+H9rlqNIEjraBtrChm2lAkVr7K1a1thSALb8JH/1KrEa7iH+nx4dZlDvhdll9HKwc+7SUVhFdM+Zol1WwUfp27d9wHSoNFJKTuTV5yYkPkHvp2dpea7NBUfJvTkRo6258Jff20Cujz2j85U5XmU5NSXcgyC45D4ZBEPDr4FE0spoNen0+gUe+0nEel/gzd3USrlwj7aTzM9+jEkisfZOiGfS19BNQm+U5uwW8clqgc4O3LeOgZTPGfPD1hDtt1FWNNoaJSawZFRy7BGA43lfEiC5cc9iyGUa5EuKz/lD+AK2YEeyL";
+}

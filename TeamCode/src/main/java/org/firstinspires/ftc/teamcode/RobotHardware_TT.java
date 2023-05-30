@@ -110,7 +110,7 @@ public class RobotHardware_TT {
     public static final double HAND_SPEED = 0.02;  // sets rate to move servo
     public static final double ARM_UP_POWER = 0.45;
     public static final double ARM_DOWN_POWER = -0.45;
-    public CustomSignalPipeline pipeline = null;
+    //public CustomSignalPipeline pipeline = null;
 
     public static boolean isCameraOpen = false;
 
