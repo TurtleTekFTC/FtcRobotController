@@ -90,4 +90,3 @@ lint/tmp/
 #remove LicenseKey
 **/LicenseKey.java
 
-**/.DS_Store
