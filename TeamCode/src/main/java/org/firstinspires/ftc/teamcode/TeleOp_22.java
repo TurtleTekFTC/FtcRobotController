@@ -112,6 +112,7 @@ public class TeleOp_22 extends LinearOpMode {
             telemetry.addData("Left Servo: ",servoPositionLeft);
             telemetry.addData("Right Servo: ",servoPositionRight);
             telemetry.addData("Orientation: ", robot.imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES));
+            telemetry.addData("Arm Stick: ", robot.getArmEncoderValue());
 
 
 
