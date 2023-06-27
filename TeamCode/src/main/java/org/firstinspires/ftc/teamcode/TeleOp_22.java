@@ -35,7 +35,7 @@ public class TeleOp_22 extends LinearOpMode {
             }
             //Changes drive mode for omni wheels
            
-            if (gamepad1.right_bumper) {
+            if (gamepad1.left_bumper) {
                 front = false;
             } else {
                 front = true;
