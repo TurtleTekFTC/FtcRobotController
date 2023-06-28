@@ -46,26 +46,26 @@ public class TeleOp_22 extends LinearOpMode {
                 if (isUsingArcade == false){
                     x = getSquare(-gamepad1.right_stick_y);
                     y = getSquare(-gamepad1.left_stick_y);
-                    robot.tankDrive(y*0.6, x*0.6);
+                    robot.tankDrive(y*0.8, x*0.8);
                 }
 
                 if (isUsingArcade == true){
                     x = getSquare(-gamepad1.right_stick_x);
                     y = getSquare(-gamepad1.left_stick_y);
-                    robot.arcadeDrive(y*0.6, x*0.6);
+                    robot.arcadeDrive(y*0.8, x*0.8);
 
                 }
             } else {
                 if (isUsingArcade == false){
                     x = -getSquare(-gamepad1.right_stick_y);
                     y = -getSquare(-gamepad1.left_stick_y);
-                    robot.tankDrive(y*0.6, x*0.6);
+                    robot.tankDrive(y*0.8, x*0.8);
                 }
 
                 if (isUsingArcade == true){
                     x = -getSquare(-gamepad1.right_stick_x);
                     y = -getSquare(-gamepad1.left_stick_y);
-                    robot.arcadeDrive(y*0.6, x*0.6);
+                    robot.arcadeDrive(y*0.8, x*0.8);
                 }
             }
 
