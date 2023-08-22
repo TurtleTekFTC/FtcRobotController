@@ -90,7 +90,7 @@ public class RobotHardware_TT {
     private Servo claw2;
     private DigitalChannel touchSensor;
     private double pastEncoder = Double.NEGATIVE_INFINITY;
-    private static final String VUFORIA_KEY = LicenseKey.key;
+ //   private static final String VUFORIA_KEY = LicenseKey.key;
     private VuforiaLocalizer vuforia;
 
 
@@ -377,7 +377,7 @@ public class RobotHardware_TT {
          */
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
 
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+    //    parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraName = myOpMode.hardwareMap.get(WebcamName.class, "Webcam 1");
 
         //  Instantiate the Vuforia engine
