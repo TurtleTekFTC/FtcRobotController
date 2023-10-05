@@ -101,7 +101,7 @@ public class TeleOp_22 extends LinearOpMode {
             //auto height buttons.
 
             if (gamepad2.left_stick_y > 0.05 || gamepad2.left_stick_y < -0.05) {
-                robot.setArmPower(-gamepad2.left_stick_y);
+                robot.setArmPower(-Math.pow(gamepad2.left_stick_y, 2));
             } else {
                 robot.armHeight(heightArm);
             }
