@@ -73,14 +73,14 @@ public class TeleOp_22 extends LinearOpMode {
             if (gamepad2.left_bumper && gamepad2.right_bumper) {
             }
             else if (gamepad2.right_bumper) {
-                servoPositionLeft = servoPositionLeft + 0.01;
-                servoPositionRight = servoPositionRight - 0.01;
+                servoPositionLeft = servoPositionLeft - 0.01;
+                servoPositionRight = servoPositionRight + 0.01;
                 robot.setHandPosition(servoPositionLeft,servoPositionRight);
 
             }
             else if (gamepad2.left_bumper) {
-                servoPositionLeft = 0;
-                servoPositionRight = 1;
+                servoPositionLeft = 1;
+                servoPositionRight = 0;
                 robot.setHandPosition(servoPositionLeft,servoPositionRight);
             }
             //Servos for claw.
