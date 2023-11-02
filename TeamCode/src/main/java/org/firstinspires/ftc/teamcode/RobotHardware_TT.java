@@ -88,7 +88,7 @@ public class RobotHardware_TT {
     private DcMotor rightBackDrive;
     private Servo claw1;
     private Servo claw2;
-    private DigitalChannel touchSensor;
+   // private DigitalChannel touchSensor;
     private double pastEncoder = Double.NEGATIVE_INFINITY;
  //   private static final String VUFORIA_KEY = LicenseKey.key;
     private VuforiaLocalizer vuforia;
@@ -165,7 +165,7 @@ public class RobotHardware_TT {
         claw2 = myOpMode.hardwareMap.get(Servo.class, "claw2");
 
 
-        touchSensor = myOpMode.hardwareMap.get(DigitalChannel.class,"touchSensor");
+      //  touchSensor = myOpMode.hardwareMap.get(DigitalChannel.class,"touchSensor");
 
         myOpMode.telemetry.addData(">", "Hardware Initialized");
         myOpMode.telemetry.update();
@@ -214,7 +214,7 @@ public class RobotHardware_TT {
         claw1.setPosition(0);
         claw2.setPosition(1);
 
-        touchSensor = myOpMode.hardwareMap.get(DigitalChannel.class,"touchSensor");
+       // touchSensor = myOpMode.hardwareMap.get(DigitalChannel.class,"touchSensor");
 
         myOpMode.telemetry.addData(">", "Hardware Initialized");
         myOpMode.telemetry.update();
@@ -361,12 +361,12 @@ public class RobotHardware_TT {
         }
 
     }
-    public boolean touchSensorNotPressed(){
-        return touchSensor.getState();
-    }
-    public boolean touchSensorIsPressed(){
-        return !touchSensor.getState();
-    }
+  //  public boolean touchSensorNotPressed(){
+  //      return touchSensor.getState();
+  //  }
+ //   public boolean touchSensorIsPressed(){
+   //     return !touchSensor.getState();
+  //  }
     public void initCamera() {
         initVuforia();
         initTfod();
