@@ -88,6 +88,8 @@ public class RobotHardware_TT {
     private DcMotor rightBackDrive;
     private Servo claw1;
     private Servo claw2;
+    private Servo wrist;
+    private Servo launcher;
    // private DigitalChannel touchSensor;
     private double pastEncoder = Double.NEGATIVE_INFINITY;
  //   private static final String VUFORIA_KEY = LicenseKey.key;
@@ -163,6 +165,7 @@ public class RobotHardware_TT {
         // Define and initialize ALL installed servos.
         claw1 = myOpMode.hardwareMap.get(Servo.class, "claw1");
         claw2 = myOpMode.hardwareMap.get(Servo.class, "claw2");
+        wrist = myOpMode.hardwareMap.get(Servo.class, "wrist");
 
 
       //  touchSensor = myOpMode.hardwareMap.get(DigitalChannel.class,"touchSensor");
@@ -344,6 +347,7 @@ public class RobotHardware_TT {
         claw1.setPosition(MID_SERVO + offset);
         claw2.setPosition(MID_SERVO - offset);
     }*/
+    //from robot's perspective.
     public void setHandPosition(double leftWheel, double rightWheel) {
         // Output the values to the motor drives.
         if (leftWheel > 0.25 ) {
@@ -360,6 +364,16 @@ public class RobotHardware_TT {
             claw2.setPosition(rightWheel);
         }
 
+    }
+
+    public void setWrist(double wrist1) {
+
+        if (wrist1 > 0.5) {
+            wrist.setPosition(0.4);
+        }
+        else {
+            wrist.setPosition(wrist1);
+        }
     }
   //  public boolean touchSensorNotPressed(){
   //      return touchSensor.getState();
