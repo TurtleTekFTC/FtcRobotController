@@ -294,7 +294,6 @@ public class RobotHardware_TT {
         tankDrive(.35, .35);
         while (getWheelInches() > inches && myOpMode.opModeIsActive()) {
                 tankDrive(.35, .35);
-                armHeight(2);
                 setHandPosition(2.04,-1.04);
         }
         tankDrive(0,0);
@@ -459,7 +458,6 @@ public class RobotHardware_TT {
         tankDrive(-0.75, 0.75);
         while (getAngle() < 85 && myOpMode.opModeIsActive()) {
             tankDrive(-0.75, 0.75);
-            armHeight(2);
             myOpMode.telemetry.addData("", getAngle());
             myOpMode.telemetry.update();
         }
@@ -470,7 +468,6 @@ public class RobotHardware_TT {
         tankDrive(0.75, -0.75);
         while (getAngle() > -85 && myOpMode.opModeIsActive()) {
             tankDrive(0.75, -0.75);
-            armHeight(2);
             myOpMode.telemetry.addData("", getAngle());
             myOpMode.telemetry.update();
         }

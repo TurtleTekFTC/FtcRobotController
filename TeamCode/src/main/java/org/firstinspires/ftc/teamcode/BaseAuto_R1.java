@@ -19,13 +19,13 @@ public class BaseAuto_R1 extends LinearOpMode {
 
         while (opModeIsActive()) {
             robot.setHandPosition(0.30,0.60);
-            robot.wake(100);
+            sleep(100);
             robot.driveDistance(0.33);
-            robot.wake(100);
+            sleep(100);
             robot.TurnRight();
-            robot.wake(100);
+            sleep(100);
             robot.driveDistance(3.25);
-            robot.armHeight(0);
+            sleep(100);
             robot.setHandPosition(0,1);
             robot.tankDrive(-0.3,-0.3);
             sleep(800);
